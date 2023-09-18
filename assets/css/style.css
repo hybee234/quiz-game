@@ -1,107 +1,116 @@
 * {
-    background-color: pink;
-}
-
-.wrapper {
-    background-color: purple;
+/*global variables*/
+    --background: rgb(51, 57, 63);
+    --hotpink: rgb(232, 102, 236);
+    --border: white;
+    --fontcolor: lightblue;
+    --border-style: 3px solid white;
+    --objectbackground: #303F54;
+    --lighterbackground: #bac2f0;
+    --heading:  #b29bf1;
+   
+/*global formatting*/
+    background-color:  var(--background);   
+    text-align: center;
+    font-family:Arial, Helvetica, sans-serif;
+    font-size: 18px;
 }
 
 /*Header*/
 
-header {
-    text-align: center;
-}
-
-header nav {
-    color: red;
-    text-align: left;
-}
-
-/* Main element */
-
-main {
+header, h1, a, nav, footer {
     display: inline-block;
-    flex-wrap: wrap;
-    background-color: green;
-    padding: 20 px;
-    margin: 20 px;
-    align-items: center;
-    text-align: center;    
-    justify-content: center;
-    border: 5px solid black;           
+    background-color: var(--lighterbackground);
+    padding: 10px 5px 5px 10px;
+    width: 60%;
 }
 
-/* article element */
-article {
-    background-color: orange;
-}
-
-/*paragraph element */
-/*Display questions here */
-p {
-    display: flexbox;
-    background-color: cyan;
-    border: 3px solid grey;    
-    margin: 20px;
-    padding: 20px;
-    text-align: center;
-    font-size: 3em;
-}
-
-#article-heading {
-    display: inline-block;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    background-color: lightblue;
+/* H1 Heading in header */
+h1 {
+    display: inline-block;      
     padding: 20px;
     text-align: center;
     align-items: center;
     justify-content: center;
     justify-items: center;
-    border: 2px;
+    border: 2px solid var(--border);
+    background-color: lightblue;
     width: 40%;
-    border-radius: 5px;
-    border-color: grey;
+    border-radius: 25px;
     
 }
 
-#questions {
-    font-size: 2em;
+/* link to high scores */
+header a {    
+    text-align: left;  
+}
+
+/* Main element contains the article element*/
+
+main {
+    display: inline-block;
+    flex-wrap: wrap;
+    background-color: var(--background);
+    border: 5px solid var(--border);
+    border-radius: 25px;
     padding: 20px;
+    margin: 20px;            
 }
 
-.card-footer {
-    text-align: center;
+/* Article container - includes Paragraph and Answers*/
+article {
+    background-color: var(--background);
+    padding: 10px 30px 10px 30px;    
 }
 
-.btn {
+
+/*Display questions here/Opening Heading */
+p {
+    color: var(--fontcolor);
+    background-color: var(--objectbackground);
+    font-size: 2.5rem;
+    border: 3px solid var(--border);
+    border-radius: 25px;          
+    padding: 19px 39px 19px 39px;
+    margin: 16px 16px 16px 16px;  
+    
+}
+
+  /*Containers for Answer Buttons*/
+div {
+    text-align: left;
+    padding: 0px 0px 0px 10px;    
+} 
+
+  /* Answer buttons */
+  .answerbtn {
+    margin: auto;   
+    border: 3px solid var(--border);
+    color: var(--fontcolor);
+    background-color: var(--objectbackground);
+    border-radius: 25px; 
+    font-size: 1.5rem;
+    line-height: 22px;
+    margin: 16px 16px 16px 16px;
+    padding: 14px 34px 14px 34px;
+    cursor: pointer;    
+  }
+
+  /*Start Quiz Button*/
+#startBtn {
     border: none;
     background-color: hsl(360, 91%, 36%);
-    border-radius: 10px;
-    box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 6px 0px rgba(0, 0, 0, 0.2) 0px 1px 1px
-      0px;
-    color: hsl(0, 0%, 100%);
-    display: inline-block;
-    font-size: 22px;
+    border-radius: 25px;
+    color: hsl(0, 0%, 100%);    
+    font-size: 2rem;
     line-height: 22px;
-    margin: 16px 16px 16px 20px;
-    padding: 14px 34px;
-    text-align: center;
-    cursor: pointer;
-   
+    margin: 30px 30px 30px 30px;
+    padding: 35px 55px 35px 55px;
+    cursor: pointer;   
   }
 
-    .card-answers {
-    background-color: blue;
-    color: rgb(0, 128, 128);
-    padding: 20px;
-    text-align: left;
-    align-items: center;
-    margin: auto;    
-    width: 40%;
-   
-  }
 
-    
+
     
 
   

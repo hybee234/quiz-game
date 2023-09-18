@@ -1,11 +1,11 @@
-var startBtnEl = document.querySelector("#startBtn");               //variable targetting Start Quiz button
-var cardHeadingEl = document.querySelector("#questions") //Heading + questions 
-var answerAEl = document.querySelector("#answerA") //Answer A
-var answerBEl = document.querySelector("#answerB") //Answer B
-var answerCEl = document.querySelector("#answerC") //Answer C
-var answerDEl = document.querySelector("#answerD") //Answer D
-var i = 0 //Variable to determine which question number to show
-var userAnswer; //variable to capture user responsen to questions to assess if correct
+var startBtnEl = document.querySelector("#startBtn");   //variable targetting Start Quiz button
+var cardHeadingEl = document.querySelector("#question") //Heading + questions 
+var answerAEl = document.querySelector("#answerA")      //Answer A
+var answerBEl = document.querySelector("#answerB")      //Answer B
+var answerCEl = document.querySelector("#answerC")      //Answer C
+var answerDEl = document.querySelector("#answerD")      //Answer D
+var i = 0                       //Variable to determine which question number to show
+var userAnswer;                 //variable to capture user response to questions to assess if correct
 var score; //user score
 var time = 75; //time remaining
 
@@ -22,54 +22,67 @@ var quizQuestions = [
     
     { 
         question: "Question 2",
-        answerA: "Yes2",
-        answerB: "No2*",
-        answerC: "Maybe2",
-        answerD: "Other2,",
+        answerA: "A: Yes2",
+        answerB: "B: No2*",
+        answerC: "C: Maybe2",
+        answerD: "D:Other2,",
         correct: "b"
     },
 
     { 
         question: "Question 3",
-        answerA: "Yes3",
-        answerB: "No3",
-        answerC: "Maybe3*",
-        answerD: "Other3,",
+        answerA: "A: Yes3",
+        answerB: "B: No3",
+        answerC: "C: Maybe3*",
+        answerD: "D: Other3,",
         correct: "c"
-    }
+    },
+
+    { 
+        question: "Question 4",
+        answerA: "A: Yes4",
+        answerB: "B: No4",
+        answerC: "C: Maybe4",
+        answerD: "D:Other4*,",
+        correct: "d"
+    },
 ]
 
 console.log("Number of questions " + quizQuestions.length)
 
 function initialiseQuiz() {
+    console.log ("initialiseQuiz() called");
     i=0; //start from question one
+    console.log ("Question number set to " + i )
     score = 0; //start with score zero
-    console.log ("Start Button Clicked");
+    console.log ("Score set to " + score)
+    console.log ("Hiding start button")
+    startBtnEl.style.display = "none"; //Hide the start button
     //timer
     quizInFlight();
-//Call timer function - 75 seconds
-//Hide "start quiz button"
-//change formatting of answer etc (padding, hide/show etc)
-//left align etc
-//Present question in sequence (counter that triggers on submission)
+    
 
-//Need a counter/check to see if we've reached the end (also need to check timer)
+//change formatting of answer etc (padding, hide/show etc)
+
+
 
 return;
 }
 
-function quizInFlight(){    
-    if (i > quizQuestions.length) {
-        //console.log("You have reached the end of the quiz");
-        console.log("hi - end of game");
-        //call end game function
+function quizInFlight(){
+    console.log ("quizInFlight Called")    
+    if (i < quizQuestions.length) {
+        console.log("i = " + i + ", No. of Q = " + quizQuestions.length);
+        cardHeadingEl.textContent = quizQuestions[i].question;  //Set question
+        answerAEl.textContent = quizQuestions[i].answerA;   //Set answer A
+        answerBEl.textContent = quizQuestions[i].answerB;   //Set answer B
+        answerCEl.textContent = quizQuestions[i].answerC;   //Set answer C
+        answerDEl.textContent = quizQuestions[i].answerD;   //Set answer D
+        
     } else {
-        console.log('else')
-    cardHeadingEl.textContent = quizQuestions[i].question;  //Set question
-    answerAEl.textContent = quizQuestions[i].answerA;   //Set answer A
-    answerBEl.textContent = quizQuestions[i].answerB;   //Set answer B
-    answerCEl.textContent = quizQuestions[i].answerC;   //Set answer C
-    answerDEl.textContent = quizQuestions[i].answerD;   //Set answer D
+       //console.log("You have reached the end of the quiz");
+       console.log("hi - end of game");
+       //call end game function
     }
     
 }
@@ -88,7 +101,6 @@ function checkAnswer(){
         time -= 15; //subtract 15 seconds from time
         console.log("Time: "+ time)
         i++; //add one to question number
-
     }
     quizInFlight();
     
@@ -127,32 +139,26 @@ startBtnEl.addEventListener("click", initialiseQuiz);
 
 //Listener to capture response to question//
     //If user clicks answer to A - update "userAnswer" variable to "a" and call "checkAnswer" function
-answerAEl.addEventListener("click", answerA)
-function answerA() {
+answerAEl.addEventListener("click", () => {
     userAnswer = "a";
     console.log("answerA() engaged. " + userAnswer + " selected");
     checkAnswer();
-}
-
-answerBEl.addEventListener("click", answerB)
-
-function answerB() {
+});
+    //If user clicks answer to A - update "userAnswer" variable to "a" and call "checkAnswer" function
+answerBEl.addEventListener("click", () => {
     userAnswer = "b";    
     console.log("answerB() engaged. " + userAnswer + " selected");
     checkAnswer();
-}
-
-answerCEl.addEventListener("click", answerC)
-
-function answerC() {
+});
+    //If user clicks answer to A - update "userAnswer" variable to "a" and call "checkAnswer" function
+answerCEl.addEventListener("click", () => {
     userAnswer = "c";
     console.log("answerC() engaged. " + userAnswer + " selected");
     checkAnswer();
-}
-answerDEl.addEventListener("click", answerD)
-
-function answerD() {
+})
+    //If user clicks answer to A - update "userAnswer" variable to "a" and call "checkAnswer" function
+answerDEl.addEventListener("click", () => {
     userAnswer = "d";
     console.log("answerD() engaged. " + userAnswer + " selected");
     checkAnswer();
-}
+})
