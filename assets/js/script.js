@@ -1,5 +1,5 @@
 var startBtnEl = document.querySelector("#startBtn");               //variable targetting Start Quiz button
-var cardHeadingEl = document.querySelector("#questions") //Heading + questions 
+var cardHeadingEl = document.querySelector("#question") //Heading + questions 
 var answerAEl = document.querySelector("#answerA") //Answer A
 var answerBEl = document.querySelector("#answerB") //Answer B
 var answerCEl = document.querySelector("#answerC") //Answer C
@@ -42,10 +42,10 @@ var quizQuestions = [
 console.log("Number of questions " + quizQuestions.length)
 
 function initialiseQuiz() {
+    console.log ("initialiseQuiz() called");
     i=0; //start from question one
     score = 0; //start with score zero
-    console.log ("Start Button Clicked");
-    //timer
+        //timer
     quizInFlight();
 //Call timer function - 75 seconds
 //Hide "start quiz button"
@@ -58,7 +58,8 @@ function initialiseQuiz() {
 return;
 }
 
-function quizInFlight(){    
+function quizInFlight(){
+    console.log ("quizInFlight Called")    
     if (i > quizQuestions.length) {
         //console.log("You have reached the end of the quiz");
         console.log("hi - end of game");
