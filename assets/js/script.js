@@ -1,14 +1,16 @@
 var startBtnEl = document.querySelector("#startBtn");   //variable targetting Start Quiz button
-var cardHeadingEl = document.querySelector("#question") //Heading + questions 
-var answerAEl = document.querySelector("#answerA")      //Answer A
-var answerBEl = document.querySelector("#answerB")      //Answer B
-var answerCEl = document.querySelector("#answerC")      //Answer C
-var answerDEl = document.querySelector("#answerD")      //Answer D
-var i = 0                       //Variable to determine which question number to show
+var cardHeadingEl = document.querySelector("#banner"); //Heading + questions 
+var answerAEl = document.querySelector("#answerA");      //Answer A
+var answerBEl = document.querySelector("#answerB");      //Answer B
+var answerCEl = document.querySelector("#answerC");      //Answer C
+var answerDEl = document.querySelector("#answerD");      //Answer D
+var questionNo = 0;                       //Variable to determine which question number to show
 var userAnswer;                 //variable to capture user response to questions to assess if correct
 var score; //user score
 var time = 75; //time remaining
-
+var outcomeEl = document.querySelector("#outcome"); //target element that displays correct/incorrect
+var answerbtnEl = document.querySelectorAll(".answerbtn"); //Capture all answer buttons
+console.log(answerbtnEl)
 //Store all the questions here//
 var quizQuestions = [
     {
@@ -43,7 +45,7 @@ var quizQuestions = [
         answerA: "A: Yes4",
         answerB: "B: No4",
         answerC: "C: Maybe4",
-        answerD: "D:Other4*,",
+        answerD: "D:Other4*",
         correct: "d"
     },
 ]
@@ -52,12 +54,17 @@ console.log("Number of questions " + quizQuestions.length)
 
 function initialiseQuiz() {
     console.log ("initialiseQuiz() called");
-    i=0; //start from question one
-    console.log ("Question number set to " + i )
+    questionNo=0; //start from question one
+    console.log ("Question number set to " + questionNo )
     score = 0; //start with score zero
     console.log ("Score set to " + score)
     console.log ("Hiding start button")
     startBtnEl.style.display = "none"; //Hide the start button
+    
+    //display answerbtnEl as blocks
+    for (i=0; i< answerbtnEl.length; i++) {
+    answerbtnEl[i].style.display = "block";
+    } 
     //timer
     quizInFlight();
     
@@ -71,13 +78,13 @@ return;
 
 function quizInFlight(){
     console.log ("quizInFlight Called")    
-    if (i < quizQuestions.length) {
-        console.log("i = " + i + ", No. of Q = " + quizQuestions.length);
-        cardHeadingEl.textContent = quizQuestions[i].question;  //Set question
-        answerAEl.textContent = quizQuestions[i].answerA;   //Set answer A
-        answerBEl.textContent = quizQuestions[i].answerB;   //Set answer B
-        answerCEl.textContent = quizQuestions[i].answerC;   //Set answer C
-        answerDEl.textContent = quizQuestions[i].answerD;   //Set answer D
+    if (questionNo < quizQuestions.length) {
+        console.log("questionNo = " + questionNo + ", No. of Q = " + quizQuestions.length);
+        cardHeadingEl.textContent = quizQuestions[questionNo].question;  //Set question
+        answerAEl.textContent = quizQuestions[questionNo].answerA;   //Set answer A
+        answerBEl.textContent = quizQuestions[questionNo].answerB;   //Set answer B
+        answerCEl.textContent = quizQuestions[questionNo].answerC;   //Set answer C
+        answerDEl.textContent = quizQuestions[questionNo].answerD;   //Set answer D
         
     } else {
        //console.log("You have reached the end of the quiz");
@@ -88,31 +95,46 @@ function quizInFlight(){
 }
 
 
-
+//-------------------------------------------//
+//Function to check if user answer is correct//
+//-------------------------------------------//
 function checkAnswer(){    
-    console.log("")
-    if (userAnswer === quizQuestions[i].correct){
-        console.log("checkAnswer() engaged. User: " + userAnswer + ", Answer: " + quizQuestions[i].correct + " Correct! +1 point no time penalty");
+    //If userAnswer matches answer in array, add score, add question number
+    if (userAnswer === quizQuestions[questionNo].correct){
+        console.log("checkAnswer() engaged. User: " + userAnswer + ", Answer: " + quizQuestions[questionNo].correct + " Correct! +1 point no time penalty");
         score++; //add one to score
         console.log ("Score is now: " + score);
-        i++; //add one to question number
+        questionNo++; //add one to question number
+        outcomeEl.textContent = "Correct!";
+        outcomeEl.style.color = "green";
+        displayOutcome();
     } else {
-        console.log("checkAnswer() engaged. User: " + userAnswer + ", Answer: " + quizQuestions[i].correct + " Wrong! Time penalty");
+        console.log("checkAnswer() engaged. User: " + userAnswer + ", Answer: " + quizQuestions[questionNo].correct + " Wrong! Time penalty");
         time -= 15; //subtract 15 seconds from time
         console.log("Time: "+ time)
-        i++; //add one to question number
+        questionNo++; //add one to question number
+        outcomeEl.textContent = "Incorrect!";
+        outcomeEl.style.color = "red";
+        displayOutcome();
     }
-    quizInFlight();
-    
+    quizInFlight();    
 }
 
+//-----------------------------------------//
+//Timer to display outcome of each question//
+//-----------------------------------------//
+function displayOutcome() {
+    var outcomeSeconds = 1
+    var outcomeTimer = setInterval (function() {
+        outcomeSeconds--;
+        outcomeEl.textcontent += outcomeSeconds;
+        if (outcomeSeconds === 0) {
+        outcomeEl.textContent = "";
+        clearInterval(outcomeTimer)
+        }
+    }, 1000);
+}
 
-//Append 4 responses that have event listener attached
-    //Clicking will set variable to 'a', 'b, 'c' or 'd'
-    //Compares variable to correct answer in array
-        // if equal then display correct + 1 score,
-        // else penalise 
-        // move to next question
 
     //  If questions run out - end game
             // Set var to "Congratulations you have reached the end"
@@ -133,11 +155,16 @@ function timer() {}
     //View high scores
 
 
-
+//-----------------------------------------------------//
 //Listener to start game when user clicks on "Start Quiz"
+//-----------------------------------------------------//
 startBtnEl.addEventListener("click", initialiseQuiz);
 
+
+
+//----------------------------------------//
 //Listener to capture response to question//
+//----------------------------------------//
     //If user clicks answer to A - update "userAnswer" variable to "a" and call "checkAnswer" function
 answerAEl.addEventListener("click", () => {
     userAnswer = "a";

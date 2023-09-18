@@ -19,15 +19,13 @@
 /*Header*/
 
 header, h1, a, nav, footer {
-    display: inline-block;
     background-color: var(--lighterbackground);
-    padding: 10px 5px 5px 10px;
-    width: 60%;
+    padding: 10px 5px 5px 10px;    
 }
 
 /* H1 Heading in header */
-h1 {
-    display: inline-block;      
+h1 {       
+    display: inline-block;
     padding: 20px;
     text-align: center;
     align-items: center;
@@ -41,8 +39,8 @@ h1 {
 }
 
 /* link to high scores */
-header a {    
-    text-align: left;  
+header nav {    
+    text-align: left;
 }
 
 /* Main element contains the article element*/
@@ -63,10 +61,12 @@ article {
     padding: 10px 30px 10px 30px;    
 }
 
-
+/*****************************************/
 /*Display questions here/Opening Heading */
-p {
-    color: var(--fontcolor);
+/*****************************************/
+#banner {
+    color: var(--heading);
+    weight: 800px;
     background-color: var(--objectbackground);
     font-size: 2.5rem;
     border: 3px solid var(--border);
@@ -84,6 +84,7 @@ div {
 
   /* Answer buttons */
   .answerbtn {
+    display: none;
     margin: auto;   
     border: 3px solid var(--border);
     color: var(--fontcolor);
@@ -93,7 +94,22 @@ div {
     line-height: 22px;
     margin: 16px 16px 16px 16px;
     padding: 14px 34px 14px 34px;
-    cursor: pointer;    
+    cursor: pointer;        
+  }
+
+.answerbtn:hover {
+    background-color: var(--lighterbackground);
+    color: var(--objectbackground);
+    border: 3px solid orangered;
+}
+
+/******************/
+/* Outcome banner */
+/******************/
+#outcome  {
+    padding: 30px, 30px, 30px, 30px;
+    color: yellow;
+    font-size: 2rem;    
   }
 
   /*Start Quiz Button*/
