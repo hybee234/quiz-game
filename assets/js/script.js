@@ -4,14 +4,21 @@ var answerAEl = document.querySelector("#answerA");      //Answer A
 var answerBEl = document.querySelector("#answerB");      //Answer B
 var answerCEl = document.querySelector("#answerC");      //Answer C
 var answerDEl = document.querySelector("#answerD");      //Answer D
+var outcomeEl = document.querySelector("#outcome"); //target element that displays correct/incorrect
+var answerbtnEl = document.querySelectorAll(".answerbtn"); //Capture all answer buttons
+var blurbEl = document.querySelector("#blurb");  //blurb on opening screen
 var questionNo = 0;                       //Variable to determine which question number to show
 var userAnswer;                 //variable to capture user response to questions to assess if correct
 var score; //user score
 var time = 75; //time remaining
-var outcomeEl = document.querySelector("#outcome"); //target element that displays correct/incorrect
-var answerbtnEl = document.querySelectorAll(".answerbtn"); //Capture all answer buttons
-console.log(answerbtnEl)
-//Store all the questions here//
+var endGameString;
+var hiscoreEl = document.querySelector("#hiscore-text");
+var hiscoreBtn = document.querySelector("#hiscoreBtn");
+var hiscoreFormEl = document.querySelector("#hiscore-form");
+
+//--------------------------------------//
+//Store all the questions in this object//
+//--------------------------------------//
 var quizQuestions = [
     {
         question: "Question 1 - Why is the sky blue?", 
@@ -23,7 +30,7 @@ var quizQuestions = [
     },
     
     { 
-        question: "Question 2",
+        question: "Question 2 - ",
         answerA: "A: Yes2",
         answerB: "B: No2*",
         answerC: "C: Maybe2",
@@ -55,26 +62,32 @@ console.log("Number of questions " + quizQuestions.length)
 function initialiseQuiz() {
     console.log ("initialiseQuiz() called");
     questionNo=0; //start from question one
-    console.log ("Question number set to " + questionNo )
+    console.log ("Question number reset to: " + questionNo );
     score = 0; //start with score zero
-    console.log ("Score set to " + score)
-    console.log ("Hiding start button")
+    console.log ("Score reset to: " + score);
     startBtnEl.style.display = "none"; //Hide the start button
-    
-    //display answerbtnEl as blocks
+    console.log ("Start Quiz Button Hidden");
+    blurbEl.style.display = "none"; //Hide the blurb
+    console.log ("Blurb hidden");
+    hiscoreEl.style.display = "none"; //Hide the hi score field
+    console.log ("Hiscore field hidden");
+    hiscoreBtn.style.display = "none"; //Hide the blurb
+    console.log ("Hiscore button hidden");
+    //Show answerbtnEl as blocks
     for (i=0; i< answerbtnEl.length; i++) {
-    answerbtnEl[i].style.display = "block";
-    } 
+        answerbtnEl[i].style.display = "block";
+    }
+    console.log ("Answers on display") 
     //timer
+    //TO be done
     quizInFlight();
     
-
-//change formatting of answer etc (padding, hide/show etc)
-
-
-
-return;
+    return;
 }
+
+//-------------------------------------------------------------------------//
+//Displays next question in queue - checks to see if questions have run out//
+//-------------------------------------------------------------------------//
 
 function quizInFlight(){
     console.log ("quizInFlight Called")    
@@ -84,16 +97,13 @@ function quizInFlight(){
         answerAEl.textContent = quizQuestions[questionNo].answerA;   //Set answer A
         answerBEl.textContent = quizQuestions[questionNo].answerB;   //Set answer B
         answerCEl.textContent = quizQuestions[questionNo].answerC;   //Set answer C
-        answerDEl.textContent = quizQuestions[questionNo].answerD;   //Set answer D
-        
+        answerDEl.textContent = quizQuestions[questionNo].answerD;   //Set answer D        
     } else {
-       //console.log("You have reached the end of the quiz");
-       console.log("hi - end of game");
-       //call end game function
-    }
-    
+        console.log("You've reached the end and scored: " + score + " points");
+        endGameString = "Well Done! You've Completed the Quiz!"
+        setTimeout(endGame, 1000); //call endGame function after 1000 millisends        
+    }    
 }
-
 
 //-------------------------------------------//
 //Function to check if user answer is correct//
@@ -120,9 +130,9 @@ function checkAnswer(){
     quizInFlight();    
 }
 
-//-----------------------------------------//
-//Timer to display outcome of each question//
-//-----------------------------------------//
+//-----------------------------------------------//
+//Short Timer to display outcome of each question//
+//-----------------------------------------------//
 function displayOutcome() {
     var outcomeSeconds = 1
     var outcomeTimer = setInterval (function() {
@@ -135,10 +145,6 @@ function displayOutcome() {
     }, 1000);
 }
 
-
-    //  If questions run out - end game
-            // Set var to "Congratulations you have reached the end"
-
 function timer() {}
 //Timer function
     //Count down from 75
@@ -147,12 +153,40 @@ function timer() {}
             //Set var to "Oh! You've run out of time!"
             // end game
 
+
+
+//-------------------------------------------//
+// Ends the game and allows high score entry //
+//-------------------------------------------//
+
+function endGame() {
+    //Hide Answers
+    for (i=0; i< answerbtnEl.length; i++) {
+        answerbtnEl[i].style.display = "none";
+        }
+    console.log ("Answers hidden")
+    //change title 
+    cardHeadingEl.textContent = endGameString;  //Set text to endGame String
+    //show blurb and update text
+    blurbEl.style.display = "block"; //Show blurb
+    blurbEl.textContent = "You managed to score " + score + " points out of " + quizQuestions.length
+    console.log ("Blurb displayed");
+    hiscoreFormEl.style.display ="inline-block";
+    hiscoreEl.style.display = "inline-block"; 
+    hiscoreBtn.style.display = "inline-block"; 
+    
+    //Submit button to commit and view highscore
+    //Use local storage to store and retrieve highscores to render.
+        //// *** UP to here - need to work out how to store local data ....
+}
+
 //endGame function
     //Update screen to display variable (end game)
     //Show score
     //Field to type in initials
     //Start again
     //View high scores
+    //Go back bring the user back to the start
 
 
 //-----------------------------------------------------//

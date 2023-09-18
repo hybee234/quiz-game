@@ -1,3 +1,7 @@
+/********/
+/*Global*/
+/********/
+
 * {
 /*global variables*/
     --background: rgb(51, 57, 63);
@@ -16,34 +20,38 @@
     font-size: 18px;
 }
 
-/*Header*/
+/***************/
+/*Header/Footer*/
+/***************/
 
 header, h1, a, nav, footer {
     background-color: var(--lighterbackground);
     padding: 10px 5px 5px 10px;    
 }
 
+/************************/
 /* H1 Heading in header */
+/************************/
+
 h1 {       
     display: inline-block;
     padding: 20px;
-    text-align: center;
-    align-items: center;
-    justify-content: center;
-    justify-items: center;
     border: 2px solid var(--border);
     background-color: lightblue;
     width: 40%;
     border-radius: 25px;
-    
 }
 
+/***********************/
 /* link to high scores */
+/***********************/
+
 header nav {    
     text-align: left;
 }
-
+/********************************************/
 /* Main element contains the article element*/
+/********************************************/
 
 main {
     display: inline-block;
@@ -75,7 +83,6 @@ article {
     border-radius: 25px;          
     padding: 19px 39px 19px 39px;
     margin: 16px 16px 16px 16px;  
-    
 }
 
 /*******************************************************/
@@ -89,7 +96,7 @@ div {
 /******************/
 /* Answer buttons */
 /******************/
-  .answerbtn {
+.answerbtn {
     display: none;
     margin: auto;   
     border: 3px solid var(--border);
@@ -101,7 +108,7 @@ div {
     margin: 16px 16px 16px 16px;
     padding: 14px 34px 14px 34px;
     cursor: pointer;        
-  }
+}
 
 /******************************************/
 /* Answer buttons - change format on hover*/
@@ -118,7 +125,18 @@ div {
 #outcome  {
     padding: 30px, 30px, 30px, 30px;    
     font-size: 2rem;    
-  }
+}
+
+/***********************/
+/**** Welcome Blurb ****/
+/***********************/
+#blurb {
+    color: var(--fontcolor);
+    font-size: 1.5rem;;
+}
+
+
+
 
   /*******************/
   /*Start Quiz Button*/
@@ -133,9 +151,12 @@ div {
     margin: 30px 30px 30px 30px;
     padding: 35px 55px 35px 55px;
     cursor: pointer;   
-  }
+}
 
-
+form {
+    padding: 20px;
+    display: none;
+}
 
     
 
