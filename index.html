@@ -31,11 +31,23 @@
                 <button id="answerD" class ="answerbtn">Answer D</button>
               </div >  
             <p id = "outcome"></p>    <!-- This is where Correct/Incorrect displays-->
-        </article>        
+        </article>  
+          <p id="blurb">Welcome to my quiz game, Rules are 
+            <br> * 75 seconds on the timer
+            <br> * wrong answer causes you lose 15 seconds on the timer
+            <br> do your best!
+          </p>
+          <form id="hiscore-form" method="POST">
+            <label for="hiscore-text">Enter your initials: </label>
+            <input type="text" placeholder="Enter your initials..." name="hiscore-text" id="hiscore-text" />
+            <button id="hiscoreBtn"> Submit </button>
+          </form>
+
+        <section class="card-footer"> 
+          <button id="startBtn" class="btn">Start Quiz!</button>
+        </section>      
     </main>
-    <section class="card-footer"> 
-      <button id="startBtn" class="btn">Start Quiz!</button>
-    </section>
+
 
     <footer>Nothing in footer yet</footer>
     <script src="./assets/js/script.js"></script>
