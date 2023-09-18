@@ -55,15 +55,17 @@ main {
     margin: 20px;            
 }
 
+/*****************************************************/
 /* Article container - includes Paragraph and Answers*/
+/*****************************************************/
 article {
     background-color: var(--background);
     padding: 10px 30px 10px 30px;    
 }
 
-/*****************************************/
-/*Display questions here/Opening Heading */
-/*****************************************/
+/***********************************************/
+/*Display banner - Questions & Opening Heading */
+/***********************************************/
 #banner {
     color: var(--heading);
     weight: 800px;
@@ -76,13 +78,17 @@ article {
     
 }
 
-  /*Containers for Answer Buttons*/
+/*******************************************************/
+/*Containers for Answer Buttons - to sort out alignment*/
+/*******************************************************/
 div {
     text-align: left;
     padding: 0px 0px 0px 10px;    
 } 
 
-  /* Answer buttons */
+/******************/
+/* Answer buttons */
+/******************/
   .answerbtn {
     display: none;
     margin: auto;   
@@ -97,22 +103,26 @@ div {
     cursor: pointer;        
   }
 
+/******************************************/
+/* Answer buttons - change format on hover*/
+/******************************************/
 .answerbtn:hover {
     background-color: var(--lighterbackground);
     color: var(--objectbackground);
     border: 3px solid orangered;
 }
 
-/******************/
-/* Outcome banner */
-/******************/
+/*************************************/
+/* Outcome banner (correct/incorrect */
+/*************************************/
 #outcome  {
-    padding: 30px, 30px, 30px, 30px;
-    color: yellow;
+    padding: 30px, 30px, 30px, 30px;    
     font-size: 2rem;    
   }
 
+  /*******************/
   /*Start Quiz Button*/
+  /*******************/
 #startBtn {
     border: none;
     background-color: hsl(360, 91%, 36%);
