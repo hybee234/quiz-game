@@ -10,13 +10,16 @@ var blurbEl = document.querySelector("#blurb");  //blurb on opening screen
 var questionNo = 0;                       //Variable to determine which question number to show
 var userAnswer;                 //variable to capture user response to questions to assess if correct
 var score; //user score
-var time = 75; //time remaining
+var gameSeconds = 0; //time remaining
 var endGameString;
 var hiScoreEl = document.querySelector("#hiscore-initial");
 var hiScoreBtn = document.querySelector("#hiscoreBtn");
 var hiScoreFormEl = document.querySelector("#hiscore-form");
 var hiScoreArray = []; //Array to store hiScoreObject (initials and score)
 var hiScoreCurrent = {}; //hiScoreCurrent Object to store initials and score
+var timerEl = document.querySelector("#timer")
+var gameHasEnded = "N" ; //Variable that gameTimer() checks to determine if the game has already ended and the timer should stop
+var gameTimeCounter;
 //--------------------------------------//
 //Store all the questions in this object//
 //--------------------------------------//
@@ -76,10 +79,10 @@ function initialiseQuiz() {
         answerbtnEl[i].style.display = "block";
     }
     console.log ("    Show - Answers buttons") 
-    //TODO: gameTimer
+    
     retrieveStorage()                                           //retrieve hiScoreArray from local storage
     console.log("    hiScoreArray = " + hiScoreArray)
-
+    gameTimer();
     quizInFlight();
     
     return;
@@ -128,8 +131,8 @@ function checkAnswer(){
     } else {
         console.log("    User: " + userAnswer + ", Answer: " + quizQuestions[questionNo].correct)
         console.log("    Incorrect! Time penalty");
-        time -= 15; //subtract 15 seconds from time
-        console.log("    Remaining time: "+ time)
+        gameSeconds -= 15; //subtract 15 seconds from time
+        console.log("    Remaining time: "+ gameSeconds)
         questionNo++; //add one to question number
         outcomeEl.textContent = "Incorrect!";
         outcomeEl.style.color = "darkred"; //dark red//
@@ -152,9 +155,9 @@ function displayOutcome() {
         outcomeSeconds--;
         //outcomeEl.textcontent += outcomeSeconds;
         if (outcomeSeconds === 0) {
-        outcomeEl.textContent = "";
-        outcomeEl.style.display = "none"
-        clearInterval(outcomeTimer)
+            outcomeEl.textContent = "";
+            outcomeEl.style.display = "none";       
+            clearInterval(outcomeTimer)
         }
     }, 1000);
 }
@@ -162,17 +165,23 @@ function displayOutcome() {
 function gameTimer() {
     console.log("")
     console.log("> gameTimer() Called") 
-
-
-}
-//TO DO Timer function
-    //Count down from 75
-    // With each refresh, assess if timer runs out,
-        //If timer runs out:
-            //Set var to "Oh! You've run out of time!"
-            // end game
-
-
+    gameSeconds = 30; //set timer to 75 seconds
+    timerEl.textContent ="Time remaining: " + gameSeconds + " seconds"
+    console.log("    gameSeconds set to " + gameSeconds + " seconds!!")
+//    outcomeEl.style.display = "block";
+    gameTimeCounter = setInterval (function() {
+        gameSeconds--;
+        timerEl.textContent ="Time remaining: " + gameSeconds + " seconds"
+        //outcomeEl.textcontent += outcomeSeconds;
+        if (gameSeconds <= 0) {
+            console.log("    You've run out of time with " + score + " points");
+            endGameString = "You've run out of time!" //text to display if user runs out of time  
+            clearInterval(gameTimeCounter)     
+            endGame();                
+        }
+    }, 1000);
+    return;
+};
 
 //-------------------------------------------//
 //-- Ends the game and show Hiscore fields --//
@@ -180,8 +189,10 @@ function gameTimer() {
 
 function endGame() {
     console.log("")
-    console.log("> endGame() Called") 
-    //Hide Answers
+    console.log("> endGame() Called")        
+    clearInterval(gameTimeCounter); //Stop the gameTimeCounter 
+    console.log ("    Timer stopped with " + gameSeconds + " seconds remaining")
+    //Hide Answer buttons
     for (i=0; i< answerbtnEl.length; i++) {
         answerbtnEl[i].style.display = "none";
         }
@@ -198,9 +209,9 @@ function endGame() {
     console.log ("    Show - High score fields and button");
 }
 
-//---------------------------------------//
-// Listen for Submit Initial and Hiscore //
-//---------------------------------------//
+//----------------------------------------------//
+// Listen for Submit Initial and Hiscore Button //
+//----------------------------------------------//
 
 hiScoreBtn.addEventListener('click', (event) => {
     console.log("")
@@ -230,9 +241,9 @@ hiScoreBtn.addEventListener('click', (event) => {
     console.log("    Initials captured: " + hiScoreCurrent.initials);  //initials in object
     console.log("    Score captured: " + hiScoreCurrent.score);        //score in object
     hiScoreArray.push(hiScoreCurrent); //push hiScoreCurrent object into hiScoreArray object         
-    console.log("    Object pushed into Array");
-       
+    console.log("    Object pushed into Array");    
     submitStorage();  //submit hiscoreArray for local storage
+    //Launch viewHighScore() //denies user the opportunity to enter multiple entries
 });
 
 //-------------------------------------------------------------------------------//
@@ -258,10 +269,15 @@ function retrieveStorage() {
     return;
 };
 
-// TO DO
-    //Start again
-    //View high scores
-    //Go back bring the user back to the start
+function viewHighScore() {
+    console.log("")
+    console.log("> viewHighScore() Called") 
+    //TODO Clear the screen 
+    //TODO Copy the code from Todo list ...
+    //TODO Button to refresh      
+      
+
+};
 
 
 //-----------------------------------------------------//

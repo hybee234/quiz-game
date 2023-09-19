@@ -24,31 +24,58 @@
 /****Header*****/
 /***************/
 
-header, a, nav {
+header {
+    display: flex;
     background-color: var(--lighterbackground);
     padding: 10px 5px 5px 10px;         
 }
-
-/************************/
-/* H1 Heading in header */
-/************************/
-
-h1 {       
-    display: inline-block;
-    padding: 20px;
-    border: 2px solid var(--border);
-    background-color: lightblue;
-    width: 40%;
-    border-radius: 25px;
-}
-
 /***********************/
 /* link to high scores */
 /***********************/
-
-header nav {    
-    text-align: left;
+/*dive container*/
+#hiscorelink {        
+    flex: 1 0 0;          /* shorthand for: flex-grow: 1, flex-shrink: 1, flex-basis: 0 */
+    display: flex;
+    justify-content: flex-start; /*Horizontal Center*/
+    align-items: center;           /*Vertical Center*/
+    border: 2px solid var(--border);  
+    background-color: var(--lighterbackground);
 }
+
+#hiscoreURL {
+    background-color: var(--lighterbackground);  
+}
+
+/************************/
+/* Heading in header */
+/************************/
+
+#heading {   
+    flex: 3 0 0;       /* shorthand for: flex-grow: 1, flex-shrink: 1, flex-basis: 0 */
+    display: flex;
+    justify-content: center;  /*Horizontal Center*/
+    align-items: start;       /*Vertical Center*/
+    border: 2px solid var(--border);
+    background-color: lightblue;
+    border-radius: 25px;
+    font-size: 2rem;    
+}
+
+/*********/
+/* Timer */
+/*********/
+#timer {    
+    flex: 1 0 0;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    border: 2px solid var(--border);    
+    background-color: var(--lighterbackground);
+}
+
+
+
+
 /********************************************/
 /* Main element contains the article element*/
 /********************************************/
@@ -79,7 +106,7 @@ article {
 /***********************************************/
 #banner {
     color: var(--heading);
-    weight: 800px;
+    font-weight: 800px;
     background-color: var(--objectbackground);
     font-size: 2.5rem;
     border: 3px solid var(--border);
@@ -91,7 +118,7 @@ article {
 /*******************************************************/
 /*Containers for Answer Buttons - to sort out alignment*/
 /*******************************************************/
-div {
+.card answers {
     text-align: left;
     padding: 0px 0px 0px 10px;    
 } 
@@ -170,8 +197,8 @@ div {
 /** Form - Hi Score **/
 /*********************/
 
-/*Enter your initials*/
-form {
+/*Enter your initials text*/
+#hiscore-form {
     padding: 10px;
     display: none;
     color: var(--fontcolor);
