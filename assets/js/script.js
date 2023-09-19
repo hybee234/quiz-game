@@ -101,7 +101,7 @@ function quizInFlight(){
     } else {
         console.log("You've reached the end and scored: " + score + " points");
         endGameString = "Well Done! You've Completed the Quiz!"
-        setTimeout(endGame, 1000); //call endGame function after 1000 millisends        
+        setTimeout(endGame, 1000); //call endGame function after 1000 millisends (allows outcome to finish displaying)       
     }    
 }
 
@@ -116,7 +116,9 @@ function checkAnswer(){
         console.log ("Score is now: " + score);
         questionNo++; //add one to question number
         outcomeEl.textContent = "Correct!";
-        outcomeEl.style.color = "green";
+        outcomeEl.style.color = "darkgreen"; //dark green
+        outcomeEl.style.background = "lightgreen";
+        outcomeEl.style.border= "3px solid darkgreen";
         displayOutcome();
     } else {
         console.log("checkAnswer() engaged. User: " + userAnswer + ", Answer: " + quizQuestions[questionNo].correct + " Wrong! Time penalty");
@@ -124,7 +126,9 @@ function checkAnswer(){
         console.log("Time: "+ time)
         questionNo++; //add one to question number
         outcomeEl.textContent = "Incorrect!";
-        outcomeEl.style.color = "red";
+        outcomeEl.style.color = "darkred"; //dark red//
+        outcomeEl.style.background = "rgb(255, 204,203)"; //"lightred"
+        outcomeEl.style.border= "3px solid darkred";
         displayOutcome();
     }
     quizInFlight();    
@@ -135,11 +139,13 @@ function checkAnswer(){
 //-----------------------------------------------//
 function displayOutcome() {
     var outcomeSeconds = 1
+    outcomeEl.style.display = "block";
     var outcomeTimer = setInterval (function() {
         outcomeSeconds--;
         outcomeEl.textcontent += outcomeSeconds;
         if (outcomeSeconds === 0) {
         outcomeEl.textContent = "";
+        outcomeEl.style.display = "none"
         clearInterval(outcomeTimer)
         }
     }, 1000);
