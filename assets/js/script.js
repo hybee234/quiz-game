@@ -295,7 +295,13 @@ function viewHighScore() {
     
     for (var i = 0; i < hiScoreArray.length; i++) {
         var li = document.createElement ("li") //create new element "li" targeted by variable li
-        li.textContent = hiScoreArray[i].initials + "  " + hiScoreArray[i].score;     //set textContent of initial and score for new li element
+        li.className = "li";
+        li.textContent = "Initials: " + hiScoreArray[i].initials + ", Score: " + hiScoreArray[i].score;     //set textContent of initial and score for new li element
+        // li.style.background = "rgb(173, 216, 230)";
+        // li.style.color = "rgb(51, 57, 63)";
+        // li.style.border= "1px solid rgb(54, 83, 110)";
+        // li.style.fontSize = "25px";
+
         //li.setAttribute("data-index", i);       //setAttribute "data-index" to the variable number (i) - DOn't think I need this line
         hiscoreulEl.appendChild(li);            //append new li element to unordered list
     }
@@ -304,7 +310,6 @@ function viewHighScore() {
     console.log ("    Show - Clear High score button");
     startAgainBtnEl.style.display = "inline";                          //Show the start Again button
     console.log ("    Show - Start Again button");
-
     return;  
 };
 
