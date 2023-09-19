@@ -15,8 +15,8 @@ var endGameString;
 var hiScoreEl = document.querySelector("#hiscore-initial");
 var hiScoreBtn = document.querySelector("#hiscoreBtn");
 var hiScoreFormEl = document.querySelector("#hiscore-form");
-var hiScoreArray = []; //Object array to store initials and scores
-
+var hiScoreArray = []; //Array to store hiScoreObject (initials and score)
+var hiScoreCurrent = {}; //hiScoreCurrent Object to store initials and score
 //--------------------------------------//
 //Store all the questions in this object//
 //--------------------------------------//
@@ -200,15 +200,19 @@ hiScoreBtn.addEventListener('click', (event) => {
     hiScoreEl.value = ""; //clear iniitals field
 
     //store score and initials in one object
-    let hiScoreCurrent = {
-        "initials": initials,
-        "score": score        
+    hiScoreCurrent = {   //object
+        initials: initials,
+        score: score     
     }
-    console.log("hiScoreCurrent = " + hiScoreCurrent)
-    hiScoreArray.push (hiScoreCurrent); //push hiScoreCurrent object into hiScoreArray object  <--- Something wrong here - not happy to push ...
-    console.log(hiScoreArray);
-    submitStorage();  //submit hiscoreArray for local storage
 
+    console.log("hiScoreCurrent = " + hiScoreCurrent);
+    console.log("initials" + hiScoreCurrent.initials);
+    console.log("score" + hiScoreCurrent.score);
+    console.log(hiScoreArray);
+
+    hiScoreArray.push(hiScoreCurrent); //push hiScoreCurrent object into hiScoreArray object  <--- Something wrong here - not happy to push ...
+        
+    submitStorage();  //submit hiscoreArray for local storage
 } )
 
 //-------------------------------------------------------------------------------//
@@ -224,7 +228,9 @@ function submitStorage() {
 //---------------------------------------------------------------------------------//
 
 function retrieveStorage() {
-    hiScoreArray = JSON.parse(localStorage.getItem("QuizScoreArray"))
+//Retrieve Array from local storage if doesn't exist then set as blank array
+    hiScoreArray = JSON.parse(localStorage.getItem("QuizScoreArray")) ?? []; 
+    
     return;
 };
 
