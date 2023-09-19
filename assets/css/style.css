@@ -177,7 +177,7 @@ form {
     color: var(--fontcolor);
 }
 /*Freetext Field*/
-#hiscore-text {
+#hiscore-initial {
     color: var(--fontcolor);
     margin: 0px 0px 0px 10px;
     padding: 10px 10px 10px 10px;
