@@ -12,9 +12,10 @@ var userAnswer;                 //variable to capture user response to questions
 var score; //user score
 var time = 75; //time remaining
 var endGameString;
-var hiscoreEl = document.querySelector("#hiscore-text");
-var hiscoreBtn = document.querySelector("#hiscoreBtn");
-var hiscoreFormEl = document.querySelector("#hiscore-form");
+var hiScoreEl = document.querySelector("#hiscore-initial");
+var hiScoreBtn = document.querySelector("#hiscoreBtn");
+var hiScoreFormEl = document.querySelector("#hiscore-form");
+var hiScoreArray = []; //Object array to store initials and scores
 
 //--------------------------------------//
 //Store all the questions in this object//
@@ -69,17 +70,18 @@ function initialiseQuiz() {
     console.log ("Start Quiz Button Hidden");
     blurbEl.style.display = "none"; //Hide the blurb
     console.log ("Blurb hidden");
-    hiscoreEl.style.display = "none"; //Hide the hi score field
+    hiScoreEl.style.display = "none"; //Hide the hiscore field
     console.log ("Hiscore field hidden");
-    hiscoreBtn.style.display = "none"; //Hide the blurb
+    hiScoreBtn.style.display = "none"; //Hide the blurb
     console.log ("Hiscore button hidden");
     //Show answerbtnEl as blocks
     for (i=0; i< answerbtnEl.length; i++) {
         answerbtnEl[i].style.display = "block";
     }
     console.log ("Answers on display") 
-    //timer
-    //TO be done
+    //TODO: timer
+    retrieveStorage() //retrieve hiScoreArray from local storage
+    console.log("hiScoreArray = " + hiScoreArray)
     quizInFlight();
     
     return;
@@ -138,11 +140,11 @@ function checkAnswer(){
 //Short Timer to display outcome of each question//
 //-----------------------------------------------//
 function displayOutcome() {
-    var outcomeSeconds = 1
+    var outcomeSeconds = 1;
     outcomeEl.style.display = "block";
     var outcomeTimer = setInterval (function() {
         outcomeSeconds--;
-        outcomeEl.textcontent += outcomeSeconds;
+        //outcomeEl.textcontent += outcomeSeconds;
         if (outcomeSeconds === 0) {
         outcomeEl.textContent = "";
         outcomeEl.style.display = "none"
@@ -152,7 +154,7 @@ function displayOutcome() {
 }
 
 function timer() {}
-//Timer function
+//TO DO Timer function
     //Count down from 75
     // With each refresh, assess if timer runs out,
         //If timer runs out:
@@ -162,7 +164,7 @@ function timer() {}
 
 
 //-------------------------------------------//
-// Ends the game and allows high score entry //
+//-- Ends the game and show Hiscore fields --//
 //-------------------------------------------//
 
 function endGame() {
@@ -177,19 +179,56 @@ function endGame() {
     blurbEl.style.display = "block"; //Show blurb
     blurbEl.textContent = "You managed to score " + score + " points out of " + quizQuestions.length
     console.log ("Blurb displayed");
-    hiscoreFormEl.style.display ="inline-block";
-    hiscoreEl.style.display = "inline-block"; 
-    hiscoreBtn.style.display = "inline-block"; 
-    
-    //Submit button to commit and view highscore
-    //Use local storage to store and retrieve highscores to render.
-        //// *** UP to here - need to work out how to store local data ....
+    hiScoreFormEl.style.display ="inline-block"; //Show "Enter your Initials"
+    hiScoreEl.style.display = "inline-block";  //Show freetext field for initials
+    hiScoreBtn.style.display = "inline-block"; //Show "submit" button      
 }
 
-//endGame function
-    //Update screen to display variable (end game)
-    //Show score
-    //Field to type in initials
+//----------------------------//
+// Submit Initial and Hiscore //
+//----------------------------//
+
+hiScoreBtn.addEventListener('click', (event) => {
+    event.preventDefault();                     //Prevent refresh with submit button is clicked
+    console.log("High Score Submit Button Click! User score is: " + score);  //Check
+    if (hiScoreEl.value === "") {
+        console.log("Initial field blank")
+        return;
+    }
+    var initials = hiScoreEl.value.trim(); //store field value into "initials"
+    console.log("Initials:" + initials);
+    hiScoreEl.value = ""; //clear iniitals field
+
+    //store score and initials in one object
+    let hiScoreCurrent = {
+        "initials": initials,
+        "score": score        
+    }
+    console.log("hiScoreCurrent = " + hiScoreCurrent)
+    hiScoreArray.push (hiScoreCurrent); //push hiScoreCurrent object into hiScoreArray object  <--- Something wrong here - not happy to push ...
+    console.log(hiScoreArray);
+    submitStorage();  //submit hiscoreArray for local storage
+
+} )
+
+//-------------------------------------------------------------------------------//
+// Submit hiScoreArray object array for local storage under key "QuizScoreArray" //
+//-------------------------------------------------------------------------------//
+function submitStorage() {
+    localStorage.setItem("QuizScoreArray", JSON.stringify(hiScoreArray));
+}
+
+
+//---------------------------------------------------------------------------------//
+// Retrieve hiScoreArray object array for local storage under key "QuizScoreArray" //
+//---------------------------------------------------------------------------------//
+
+function retrieveStorage() {
+    hiScoreArray = JSON.parse(localStorage.getItem("QuizScoreArray"))
+    return;
+};
+
+// TO DO
     //Start again
     //View high scores
     //Go back bring the user back to the start
