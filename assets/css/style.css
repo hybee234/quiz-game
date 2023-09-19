@@ -21,12 +21,12 @@
 }
 
 /***************/
-/*Header/Footer*/
+/****Header*****/
 /***************/
 
-header, h1, a, nav, footer {
+header, a, nav {
     background-color: var(--lighterbackground);
-    padding: 10px 5px 5px 10px;    
+    padding: 10px 5px 5px 10px;         
 }
 
 /************************/
@@ -55,13 +55,16 @@ header nav {
 
 main {
     display: inline-block;
-    flex-wrap: wrap;
     background-color: var(--background);
-    border: 5px solid var(--border);
+    justify-content: center;
     border-radius: 25px;
     padding: 20px;
-    margin: 20px;            
+    margin: 20px;
+    min-height: 70vh;            
 }
+
+
+
 
 /*****************************************************/
 /* Article container - includes Paragraph and Answers*/
@@ -113,19 +116,29 @@ div {
 /******************************************/
 /* Answer buttons - change format on hover*/
 /******************************************/
-.answerbtn:hover {
+.answerbtn:hover, #hiscoreBtn:hover {
     background-color: var(--lighterbackground);
     color: var(--objectbackground);
-    border: 3px solid orangered;
+    border: 3px solid rgb(115, 15, 161);
 }
 
 /*************************************/
 /* Outcome banner (correct/incorrect */
 /*************************************/
 #outcome  {
-    padding: 30px, 30px, 30px, 30px;    
-    font-size: 2rem;    
+    display: none;
+    position: relative;
+    left: 30px;
+    width: 200px;
+    font-size: 2rem;
+    background-color: yellow;
+    border-radius: 10px;    
+    padding: 10px 10px 10px 10px;
+    border: 3px solid var(--border);
+    margin: 100px 0px 0px 0px;
 }
+
+
 
 /***********************/
 /**** Welcome Blurb ****/
@@ -148,16 +161,46 @@ div {
     color: hsl(0, 0%, 100%);    
     font-size: 2rem;
     line-height: 22px;
-    margin: 30px 30px 30px 30px;
+    margin: 30px 30px 30px 30px;    
     padding: 35px 55px 35px 55px;
     cursor: pointer;   
 }
 
+/*********************/
+/** Form - Hi Score **/
+/*********************/
+
+/*Enter your initials*/
 form {
     padding: 20px;
     display: none;
+    color: var(--fontcolor);
+}
+/*Freetext Field*/
+#hiscore-text {
+    color: var(--fontcolor);
+    margin: 0px 0px 0px 10px;
+    padding: 10px 10px 10px 10px;
 }
 
-    
+/*Submit button*/
+#hiscoreBtn {
+    color: var(--fontcolor);
+    padding: 5px 5px 5px 5px;
+    margin: 0px 0px 0px 10px;
+    background-color: var(--objectbackground);
+    border-radius: 10px;
+    border: 3px solid var(--border);
+}
 
-  
+
+/****************/
+/**** Footer ****/
+/****************/
+
+
+footer {    
+    background-color: var(--lighterbackground);
+    padding: 10px 5px 100px 10px; 
+    margin-top: auto;       
+}
