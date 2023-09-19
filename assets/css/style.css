@@ -36,10 +36,11 @@ header {
 #hiscorelink {        
     flex: 1 0 0;          /* shorthand for: flex-grow: 1, flex-shrink: 1, flex-basis: 0 */
     display: flex;
-    justify-content: flex-start; /*Horizontal Center*/
-    align-items: center;           /*Vertical Center*/
-    border: 2px solid var(--border);  
-    background-color: var(--lighterbackground);
+    justify-content: center; /*Horizontal Center*/
+    align-items: end;           /*Vertical Center*/
+    background-color: var(--lighterbackground);    
+    padding: 0px 0px 10px 0px;
+    margin: 0px 20px 0px 0px;
 }
 
 #hiscoreURL {
@@ -54,11 +55,13 @@ header {
     flex: 3 0 0;       /* shorthand for: flex-grow: 1, flex-shrink: 1, flex-basis: 0 */
     display: flex;
     justify-content: center;  /*Horizontal Center*/
-    align-items: start;       /*Vertical Center*/
+    align-items: center;       /*Vertical Center*/
     border: 2px solid var(--border);
     background-color: lightblue;
     border-radius: 25px;
-    font-size: 2rem;    
+    font-size: 2rem; 
+    padding: 20px 0px 20px 0px;
+    margin: 20px 0px 20px 0px;    
 }
 
 /*********/
@@ -67,10 +70,11 @@ header {
 #timer {    
     flex: 1 0 0;
     display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    border: 2px solid var(--border);    
-    background-color: var(--lighterbackground);
+    justify-content: center;
+    align-items: end;       
+    background-color: var(--lighterbackground);    
+    padding: 0px 0px 10px 0px;
+    margin: 0px 0px 0px 20px;
 }
 
 
@@ -183,7 +187,7 @@ article {
   /*******************/
 #startBtn {
     border: none;
-    background-color: hsl(360, 91%, 36%);
+    background-color: hsl(108, 73%, 29%);
     border-radius: 25px;
     color: hsl(0, 0%, 100%);    
     font-size: 2rem;
