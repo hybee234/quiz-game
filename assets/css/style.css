@@ -8,8 +8,8 @@
     --hotpink: rgb(232, 102, 236);
     --border: white;
     --fontcolor: lightblue;
-    --border-style: 3px solid white;
-    --objectbackground: #303F54;
+    --border-style: 3px solid white;    
+    --objectbackground: rgb(54, 83, 110);
     --lighterbackground: #bac2f0;
     --heading:  #b29bf1;
    
@@ -36,10 +36,11 @@ header {
 #hiscorelink {        
     flex: 1 0 0;          /* shorthand for: flex-grow: 1, flex-shrink: 1, flex-basis: 0 */
     display: flex;
-    justify-content: flex-start; /*Horizontal Center*/
-    align-items: center;           /*Vertical Center*/
-    border: 2px solid var(--border);  
-    background-color: var(--lighterbackground);
+    justify-content: center; /*Horizontal Center*/
+    align-items: end;           /*Vertical Center*/
+    background-color: var(--lighterbackground);    
+    padding: 0px 0px 10px 0px;
+    margin: 0px 20px 0px 0px;
 }
 
 #hiscoreURL {
@@ -54,11 +55,13 @@ header {
     flex: 3 0 0;       /* shorthand for: flex-grow: 1, flex-shrink: 1, flex-basis: 0 */
     display: flex;
     justify-content: center;  /*Horizontal Center*/
-    align-items: start;       /*Vertical Center*/
+    align-items: center;       /*Vertical Center*/
     border: 2px solid var(--border);
     background-color: lightblue;
     border-radius: 25px;
-    font-size: 2rem;    
+    font-size: 2rem; 
+    padding: 20px 0px 20px 0px;
+    margin: 20px 0px 20px 0px;    
 }
 
 /*********/
@@ -67,10 +70,11 @@ header {
 #timer {    
     flex: 1 0 0;
     display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    border: 2px solid var(--border);    
-    background-color: var(--lighterbackground);
+    justify-content: center;
+    align-items: end;       
+    background-color: var(--lighterbackground);    
+    padding: 0px 0px 10px 0px;
+    margin: 0px 0px 0px 20px;
 }
 
 
@@ -118,7 +122,7 @@ article {
 /*******************************************************/
 /*Containers for Answer Buttons - to sort out alignment*/
 /*******************************************************/
-.card answers {
+.card-answers {
     text-align: left;
     padding: 0px 0px 0px 10px;    
 } 
@@ -178,12 +182,12 @@ article {
 
 
 
-  /*******************/
-  /*Start Quiz Button*/
-  /*******************/
+/*******************/
+/*Start Quiz Button*/
+/*******************/
 #startBtn {
     border: none;
-    background-color: hsl(360, 91%, 36%);
+    background-color: hsl(108, 73%, 29%);
     border-radius: 25px;
     color: hsl(0, 0%, 100%);    
     font-size: 2rem;
@@ -191,6 +195,24 @@ article {
     margin: 30px 30px 30px 30px;    
     padding: 35px 55px 35px 55px;
     cursor: pointer;   
+}
+
+/***********************************/
+/*Clear Hi Score/Start Again Button*/
+/***********************************/
+
+#clearHiScoreBtn, #startAgainBtn {
+    display: none;
+    border: none;
+    background-color: hsl(108, 73%, 29%);
+    border-radius: 15px;
+    color: hsl(0, 0%, 100%);    
+    font-size: 1rem;
+    line-height: 22px;
+    margin: 30px 30px 30px 30px;    
+    padding: 10px 20px 10px 20px;
+    cursor: pointer;
+
 }
 
 /*********************/
@@ -220,6 +242,12 @@ article {
     border: 3px solid var(--border);
 }
 
+#hiscorelink {
+    color: var(--blue);
+    text-decoration: underline;    
+}
+
+
 /****************/
 /**** Footer ****/
 /****************/
@@ -229,4 +257,18 @@ footer {
     background-color: var(--lighterbackground);
     padding: 10px 5px 100px 10px; 
     margin-top: auto;       
+}
+
+/*****************/
+/*View high score*/
+/*****************/
+
+.li {
+    padding: 5px;
+    margin: 5px;
+    background-color: var(--fontcolor);
+    color: var(--background);
+    border: 1px solid var(--objectbackground);
+    font-size: 2rem;
+    
 }

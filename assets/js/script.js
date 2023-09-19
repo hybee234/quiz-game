@@ -20,6 +20,11 @@ var hiScoreCurrent = {}; //hiScoreCurrent Object to store initials and score
 var timerEl = document.querySelector("#timer")
 var gameHasEnded = "N" ; //Variable that gameTimer() checks to determine if the game has already ended and the timer should stop
 var gameTimeCounter;
+var hiscoreulEl = document.querySelector("#highscore-ul"); //target unordered list element to populate high scores
+var startAgainBtnEl = document.querySelector("#startAgainBtn");    //Variable targetting the "Start Again" button that appears on High score screen
+var clearHiScoreBtnEl = document.querySelector("#clearHiScoreBtn");  //Variable targetting the "Clear High score" button that appears on High score screen
+
+
 //--------------------------------------//
 //Store all the questions in this object//
 //--------------------------------------//
@@ -75,16 +80,18 @@ function initialiseQuiz() {
     console.log ("    Hide - High score field");
     hiScoreBtn.style.display = "none";                          //Hide the high score button
     console.log ("    Hide - High score button");
+    clearHiScoreBtnEl.style.display = "none";                          //Hide the clear high score button
+    console.log ("    Hide - Clear High score button");
+    startAgainBtnEl.style.display = "none";                          //Hide the start Again button
+    console.log ("    Hide - Start Again button");
     for (i=0; i< answerbtnEl.length; i++) {                     //Show answer buttons (answerbtnEl)
         answerbtnEl[i].style.display = "block";
     }
     console.log ("    Show - Answers buttons") 
-    
     retrieveStorage()                                           //retrieve hiScoreArray from local storage
     console.log("    hiScoreArray = " + hiScoreArray)
     gameTimer();
     quizInFlight();
-    
     return;
 }
 
@@ -166,12 +173,12 @@ function gameTimer() {
     console.log("")
     console.log("> gameTimer() Called") 
     gameSeconds = 30; //set timer to 75 seconds
-    timerEl.textContent ="Time remaining: " + gameSeconds + " seconds"
+    timerEl.textContent = gameSeconds + " seconds remaining";
     console.log("    gameSeconds set to " + gameSeconds + " seconds!!")
 //    outcomeEl.style.display = "block";
     gameTimeCounter = setInterval (function() {
         gameSeconds--;
-        timerEl.textContent ="Time remaining: " + gameSeconds + " seconds"
+        timerEl.textContent = gameSeconds + " seconds remaining";
         //outcomeEl.textcontent += outcomeSeconds;
         if (gameSeconds <= 0) {
             console.log("    You've run out of time with " + score + " points");
@@ -243,7 +250,7 @@ hiScoreBtn.addEventListener('click', (event) => {
     hiScoreArray.push(hiScoreCurrent); //push hiScoreCurrent object into hiScoreArray object         
     console.log("    Object pushed into Array");    
     submitStorage();  //submit hiscoreArray for local storage
-    //Launch viewHighScore() //denies user the opportunity to enter multiple entries
+    viewHighScore(); //Launch viewHighScore() //denies user the opportunity to enter multiple entries
 });
 
 //-------------------------------------------------------------------------------//
@@ -256,29 +263,74 @@ function submitStorage() {
     console.log("    Object array stored in local storage")
 };
 
-
 //---------------------------------------------------------------------------------//
 // Retrieve hiScoreArray object array for local storage under key "QuizScoreArray" //
 //---------------------------------------------------------------------------------//
 
 function retrieveStorage() {
     console.log("")
-    console.log("> retriveStorage() Called") 
+    console.log("> retrieveStorage() Called") 
 //Retrieve Array from local storage if doesn't exist then set as blank array
     hiScoreArray = JSON.parse(localStorage.getItem("QuizScoreArray")) ?? []; 
     return;
 };
 
+//-----------------------------------------//
+//-- Display High Scores for user to see --//
+//-----------------------------------------//
+
 function viewHighScore() {
     console.log("")
     console.log("> viewHighScore() Called") 
-    //TODO Clear the screen 
-    //TODO Copy the code from Todo list ...
-    //TODO Button to refresh      
-      
+    hiscoreulEl.innerHTML = "" //clear Unordered list
+    console.log(hiScoreArray)    
+    cardHeadingEl.textContent = "High scores - Hall of Fame" //change title to High Score
+    console.log("    Update - Banner to 'High Score!'")
+    blurbEl.style.display = "none"; //hide blurb 
+    console.log("    Hide - Blurb");
+    hiScoreFormEl.style.display ="none"; //Hide "Enter your Initials"
+    hiScoreEl.style.display = "none";  //Hide freetext field for initials
+    hiScoreBtn.style.display = "none"; //Hide "submit" button      
+    console.log("    Hide - High score fields and button");
+    
+    for (var i = 0; i < hiScoreArray.length; i++) {
+        var li = document.createElement ("li") //create new element "li" targeted by variable li
+        li.className = "li";
+        li.textContent = "Initials: " + hiScoreArray[i].initials + ", Score: " + hiScoreArray[i].score;     //set textContent of initial and score for new li element
+        // li.style.background = "rgb(173, 216, 230)";
+        // li.style.color = "rgb(51, 57, 63)";
+        // li.style.border= "1px solid rgb(54, 83, 110)";
+        // li.style.fontSize = "25px";
 
+        //li.setAttribute("data-index", i);       //setAttribute "data-index" to the variable number (i) - DOn't think I need this line
+        hiscoreulEl.appendChild(li);            //append new li element to unordered list
+    }
+    
+    clearHiScoreBtnEl.style.display = "inline";                          //Show the clear high score button
+    console.log ("    Show - Clear High score button");
+    startAgainBtnEl.style.display = "inline";                          //Show the start Again button
+    console.log ("    Show - Start Again button");
+    return;  
 };
 
+//---------------------------------------------------------------------//
+//Listener to clear high scores when user clicks on "clearHiScoreBtnEl"//
+//---------------------------------------------------------------------//
+clearHiScoreBtnEl.addEventListener("click", () => {    
+    console.log("    clearHiScoreBtnEl clicked");   
+    hiScoreArray = [];   // Clear the array
+    submitStorage();     // Submit the empty array to local storage
+    retrieveStorage();   // Retrieve the empty array from local storage
+    viewHighScore();     // Republish highscores
+})
+
+//----------------------------------------------------------------------//
+//Listener to start the game again when user clicks on "startAgainBtnEl"//
+//----------------------------------------------------------------------//
+startAgainBtnEl.addEventListener("click", () => {
+    console.log("    startAgainBtnEl clicked");   
+    location.reload();    
+})
 
 //-----------------------------------------------------//
 //Listener to start game when user clicks on "Start Quiz"
