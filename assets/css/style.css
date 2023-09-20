@@ -91,7 +91,7 @@ main {
     border-radius: 25px;
     padding: 20px;
     margin: 20px;                            
-    min-height: 82vh;           
+    min-height: 70vh;           
 }
 
 /*****************************************************/
@@ -298,9 +298,9 @@ article {
 footer {    
     color: var(--lighterbackground);
     padding: 5px 5px 5px 5px; 
-    bottom: 0;
+    bottom: 0px;
     width: 100%;
-    min-height: 3vh;        
+    min-height: 20vh;        
 }
 
 /*****************/
