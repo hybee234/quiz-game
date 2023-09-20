@@ -32,92 +32,91 @@ var bulletEl = document.querySelectorAll(".bullet");                //variable t
 //--------------------------------------//
 var quizQuestions = [
     {
-        question: "Q1 - Why is the sky blue?", 
-        answerA: "A: Because it has been painted blue*",
-        answerB: "B: It is a reflection of the sea",
-        answerC: "C: Because Red would've been too angry a colour",
-        answerD: "D: Why are *you* blue?",
+        question: "Q1 What is JavaScript and what is its primary use in web development?", 
+        answerA: "A) It is a programming language used primarily for enhance interactivity and functionality of webpages in web development",
+        answerB: "B) It is a programming language used primarily for styling the web page",
+        answerC: "C) It is a programming language used primarily to create the structure of a webpage",
+        answerD: "D) It is a popular CSS framework for developing responsive and mobile-first websites",
         correct: "a",
     },
     
     { 
-        question: "Q2 - ",
-        answerA: "A: Yes2",
-        answerB: "B: No2*",
-        answerC: "C: Maybe2",
-        answerD: "D:Other2,",
-        correct: "b"
+        question: "Q2 How do you declare variables in JavaScript?",
+        answerA: "A) var variable = 2;",
+        answerB: "B) let constant = 23;",
+        answerC: "C) const alphabet;",
+        answerD: "D) all of the above",
+        correct: "d"
     },
 
     { 
-        question: "Q3",
-        answerA: "A: Yes3",
-        answerB: "B: No3",
-        answerC: "C: Maybe3*",
-        answerD: "D: Other3,",
+        question: "Q3 Which of the following data types are NOT used in Javascript?",
+        answerA: "A) number",
+        answerB: "B) string",
+        answerC: "C) arrays",
+        answerD: "D) boolean",
         correct: "c"
     },
 
     { 
-        question: "Q4",
-        answerA: "A: Yes4",
-        answerB: "B: No4",
-        answerC: "C: Maybe4",
-        answerD: "D: Other4*",
+        question: "Q4 What is the basic structure of a For Loop?",
+        answerA: "A) for (i=0; i < string.length; i+) {//code to be excuted};",
+        answerB: "B) for (i=0; i < string; i+) {//code to be excuted};",
+        answerC: "C) for (i=0; i > string; i++) {//code to be excuted};",
+        answerD: "D) for (i=0; i < string.length; i++) {//code to be excuted};",
         correct: "d"
     },
     { 
-        question: "Q5",
-        answerA: "A: Yes4",
-        answerB: "B: No4",
-        answerC: "C: Maybe4",
-        answerD: "D: Other4*",
-        correct: "d"
+        question: "Q5 what is a javaScript function?",
+        answerA: "A) a resuable block of code that performs a specific task when called",
+        answerB: "B) a reusable block of code that runs when a specified event occurs",
+        answerC: "C) a comparison operator enabling assessment of data and stored values against one another",
+        answerD: "D) a arithmetic operator enabling storage of multiple variables in an array",
+        correct: "a"
     },
     { 
-        question: "Q6",
-        answerA: "A: Yes4",
-        answerB: "B: No4",
-        answerC: "C: Maybe4",
-        answerD: "D: Other4*",
-        correct: "d"
+        question: "Q6 What does the 'a === b' expression mean in logical comparison?",
+        answerA: "A) The expression is incorrect, only a single '=' is required to store a value against a variable",
+        answerB: "B) loose equality between a and b (value only)",
+        answerC: "C) strict equality between a and b (value and data type)",
+        answerD: "D) that there is no need to use both variables 'a' and 'b' in your code",
+        correct: "c"
     },
     { 
-        question: "Q7",
-        answerA: "A: Yes4",
-        answerB: "B: No4",
-        answerC: "C: Maybe4",
-        answerD: "D: Other4*",
-        correct: "d"
+        question: "Q7 What does 'document.querySelector' represent in code 'var outcomeEl = document.querySelector('#outcome');' ",
+        answerA: "A) create an new HTML element with ID = 'outcome'",
+        answerB: "B) target the HTML element with ID = 'outcome'",
+        answerC: "C) set an attribute against HTML element with ID = 'outcome'",
+        answerD: "D) run a query on HTML element with ID = 'outcome' and return data attribute values",
+        correct: "b"
     },
     { 
-        question: "Q8",
-        answerA: "A: Yes4",
-        answerB: "B: No4",
-        answerC: "C: Maybe4",
-        answerD: "D: Other4*",
-        correct: "d"
+        question: "Q8 What does this line of code do? outcomeEl.textContent = 'Correct!';",
+        answerA: "A) Update the text value in variable outcomeEl to 'Correct'",
+        answerB: "B) The coder is leaving a comment for themselves to indicate this line of code is correct",
+        answerC: "C) Update the text value that variable outcomeEl is targetting to 'Correct'!",
+        answerD: "D) This is a boolean expression that has an outcome of 'Corrent'",
+        correct: "c"
     },
     { 
-        question: "Q9",
-        answerA: "A: Yes4",
-        answerB: "B: No4",
-        answerC: "C: Maybe4",
-        answerD: "D: Other4*",
-        correct: "d"
+        question: "Q9 What is meant by the expression 'stringify' and what does it relate to?",
+        answerA: "A) Relates to JSON.Stringify - it turns strings into objects to be used by web applications",
+        answerB: "B) Relates to JSON.Stringify - it turns objects into strings to allow for local storage",
+        answerC: "C) Relates to JSON.Parse - use to stringify objects into strings to allow for local storage",
+        answerD: "D) Relates to JSON.Parse - used to stringify strings into objects to allow for local storage",
+        correct: "b"
     },
     { 
-        question: "Q10",
-        answerA: "A: Yes4",
-        answerB: "B: No4",
-        answerC: "C: Maybe4",
-        answerD: "D: Other4*",
+        question: "Q10 What is event bubbling?",
+        answerA: "A) Event bubbling connects multiple event listners to trigger sequentially",
+        answerB: "B) Event bubbling connects multiple event listeners to trigger simultanously",
+        answerC: "C) Event bubbling allows the propagation of function if multiple event listeners are triggered simultaneously",
+        answerD: "D) Event blubbing stops the propagation of functions if multiple event listeners are triggered simultaneously",
         correct: "d"
     },
 ]
-
 function initialiseQuiz() {
-    console.log ("> initialiseQuiz() called");
+    console.log ("> initialiseQuiz() Called");
     questionNo=0;                                               //start from question one
     console.log ("    Reset - Question number: " + questionNo );
     score = 0;                                                  //start with score zero
@@ -164,7 +163,7 @@ function quizInFlight(){
         answerAEl.textContent = quizQuestions[questionNo].answerA;       //Set answer A
         answerBEl.textContent = quizQuestions[questionNo].answerB;       //Set answer B
         answerCEl.textContent = quizQuestions[questionNo].answerC;       //Set answer C
-        answerDEl.textContent = quizQuestions[questionNo].answerD;       //Set answer D        
+        answerDEl.textContent = quizQuestions[questionNo].answerD;       //Set answer D               
     } else {
         console.log("    You have reached the end and scored: " + score + " points");
         endGameString = "Well Done! You've Completed the Quiz!"
@@ -200,7 +199,7 @@ function checkAnswer(){
         outcomeEl.style.border= "3px solid darkred";
         displayOutcome();
     }
-    quizInFlight();    
+    setTimeout(quizInFlight,750);                    //wait 750ms before showing the next question     
 }
 
 //-----------------------------------------------//
@@ -218,7 +217,7 @@ function displayOutcome() {
             outcomeEl.style.display = "none";       
             clearInterval(outcomeTimer)
         }
-    }, 1000);
+    }, 750);
 }
 
 //-----------------------------//
@@ -239,7 +238,7 @@ function gameTimer() {
             console.log("    You have run out of time with " + score + " points");
             endGameString = "You have run out of time!"                 //text to display if user runs out of time  
             clearInterval(gameTimeCounter)     
-            endGame();                
+            setTimeout(endGame,1000);                                   //wait 1000ms after time runs out before calling endGame
         }
     }, 1000);
     return;
@@ -277,7 +276,7 @@ function endGame() {
 
 hiScoreBtn.addEventListener('click', (event) => {
     console.log("")
-    console.log("> hiScoreBtn clicked") 
+    console.log("! hiScoreBtn Clicked") 
     event.preventDefault();                                               //Prevent refresh with submit button is clicked
 //If "initials" field is blank - turn field yellow for 1 second//
     if (hiScoreEl.value === "") {
@@ -351,15 +350,13 @@ function viewHighScore() {
     hiScoreFormEl.style.display ="none";                     //Hide "Enter your Initials"
     hiScoreEl.style.display = "none";                        //Hide freetext field for initials
     hiScoreBtn.style.display = "none";                       //Hide "submit" button      
-    console.log("    Hide - High score fields and button");
-    
+    console.log("    Hide - High score fields and button");    
     for (var i = 0; i < hiScoreArray.length; i++) {
         var li = document.createElement ("li")               //loop through and create new element "li" for each object array
         li.className = "li";
         li.textContent = "Initials: " + hiScoreArray[i].initials + ", Score: " + hiScoreArray[i].score;     //set textContent of initial and score for new li element
         hiscoreulEl.appendChild(li);                         //append new li element to unordered list
-    }
-    
+    };
     clearHiScoreBtnEl.style.display = "inline";             //Show the clear high score button
     console.log ("    Show - Clear High score button");
     //reload button to displauy "start again" if user has played through, else display "go back" (i.e. clicked on view high score)
@@ -367,18 +364,18 @@ function viewHighScore() {
         reloadBtnEl.textContent = "Start Again!";
     } else {
         reloadBtnEl.textContent = "Back to Home";
-    }        
+    };        
     reloadBtnEl.style.display = "inline";                   //Show the Reload Button 
     console.log ("    Show - Reload button");
-
     return;  
 };
 
 //---------------------------------------------------------------------//
 //Listener to clear high scores when user clicks on "clearHiScoreBtnEl"//
 //---------------------------------------------------------------------//
-clearHiScoreBtnEl.addEventListener("click", () => {    
-    console.log("    clearHiScoreBtnEl clicked");   
+clearHiScoreBtnEl.addEventListener("click", () => {   
+    console.log("") 
+    console.log("! clearHiScoreBtnEl Clicked");   
     hiScoreArray = [];   // Clear the array    
     submitStorage();     // Submit the empty array to local storage
     retrieveStorage();   // Retrieve the empty array from local storage
@@ -389,7 +386,8 @@ clearHiScoreBtnEl.addEventListener("click", () => {
 //Listener to reload the game when user clicks on "reloadBtnEl"//
 //-------------------------------------------------------------//
 reloadBtnEl.addEventListener("click", () => {
-    console.log("    reloadBtnEl clicked");
+    console.log("")
+    console.log("! reloadBtnEl Clicked");
     playedThroughFlag = "N";   
     location.reload();    //reloads the website - back to home page
 })
@@ -398,7 +396,8 @@ reloadBtnEl.addEventListener("click", () => {
 //Listener to show high score when use clicks on View High Scores link in header"//
 //-------------------------------------------------------------------------------//
 hiScoreLinkEl.addEventListener("click", ()=> {
-    console.log("    hiScoreLinkEl clicked");   
+    console.log("") 
+    console.log("! hiScoreLinkEl Clicked");   
      //submitStorage();
     console.log(hiScoreArray)
     console.log("    hiScoreArray.length: " + hiScoreArray.length)    

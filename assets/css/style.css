@@ -109,6 +109,7 @@ main {
 article {
     background-color: var(--background);
     padding: 10px 30px 10px 30px;    
+
 }
 
 /***********************************************/
@@ -138,13 +139,13 @@ article {
 /******************/
 .answerbtn {
     display: none;
-    margin: auto;   
+    margin: auto;
+    text-align: left;   
     border: 3px solid var(--border);
     color: var(--fontcolor);
     background-color: var(--objectbackground);
     border-radius: 25px; 
     font-size: 1.5rem;
-    line-height: 22px;
     margin: 16px 16px 16px 16px;
     padding: 14px 34px 14px 34px;
     cursor: pointer;        
@@ -164,7 +165,9 @@ article {
 /*************************************/
 #outcome  {
     display: none;
-    position: relative;
+    position: static;
+    bottom: 0px; left: auto;
+    text-align: center;
     left: 30px;
     width: 200px;
     font-size: 2rem;
@@ -172,7 +175,7 @@ article {
     border-radius: 10px;    
     padding: 10px 10px 10px 10px;
     border: 3px solid var(--border);
-    margin: 100px 0px 0px 0px;
+    margin: 20px 0px 0px 0px;
 }
 
 
