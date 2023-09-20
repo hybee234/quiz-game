@@ -17,7 +17,7 @@
     background-color:  var(--background);   
     text-align: center;
     font-family:Arial, Helvetica, sans-serif;
-    font-size: 18px;
+    font-size: 16px;
 }
 
 /***************/
@@ -26,8 +26,7 @@
 
 header {
     display: flex;
-    background-color: var(--lighterbackground);
-    padding: 10px 5px 5px 10px;         
+    background-color: var(--lighterbackground);                 
 }
 /***********************/
 /* link to high scores */
@@ -36,17 +35,13 @@ header {
 #hiscorelink {        
     flex: 1 0 0;          /* shorthand for: flex-grow: 1, flex-shrink: 1, flex-basis: 0 */
     display: flex;
-    justify-content: center; /*Horizontal Center*/
+    justify-content: left; /*Horizontal Center*/
     align-items: center;           /*Vertical Center*/
     background-color: var(--lighterbackground);    
-    padding: 5px 5px 5px 5px;
-    margin: 75px 5px 0px 5px;
-   
-    color: blue;    
-    font-size: 1rem;  
+    padding: 5px 5px 5px 5px;  
+    color: blue;        
     text-decoration: underline;
-    cursor: pointer;  
-     
+    cursor: pointer;      
 }
 
 #hiscorelink:hover { 
@@ -61,14 +56,10 @@ header {
     flex: 3 0 0;       /* shorthand for: flex-grow: 1, flex-shrink: 1, flex-basis: 0 */
     display: flex;
     justify-content: center;  /*Horizontal Center*/
-    align-items: center;       /*Vertical Center*/
-    border: 2px solid var(--border);
-    background-color: lightblue;
-    border-radius: 25px;
-    font-size: 2rem; 
-    padding: 20px 0px 20px 0px;
-    margin: 20px 0px 20px 0px;    
+    align-items: center;       /*Vertical Center*/    
+    background-color: var(--lighterbackground);    
 }
+
 
 /*********/
 /* Timer */
@@ -76,11 +67,13 @@ header {
 #timer {    
     flex: 1 0 0;
     display: flex;
-    justify-content: center;
+    justify-content: right;
     align-items: end;       
     background-color: var(--lighterbackground);    
-    padding: 0px 0px 10px 0px;
-    margin: 0px 0px 0px 20px;
+    padding: 0px 5px 5px 5px;  
+    color: rgb(6, 120, 6);  /*(6, 120, 6)*/
+    font-size:1.25rem;
+    font-weight: 700;   
 }
 
 
@@ -94,10 +87,11 @@ main {
     display: inline-block;
     background-color: var(--background);
     justify-content: center;
+    width: 90%;
     border-radius: 25px;
     padding: 20px;
-    margin: 20px;
-    min-height: 70vh;            
+    margin: 20px;                            
+    min-height: 85vh;            
 }
 
 
@@ -108,9 +102,7 @@ main {
 /*****************************************************/
 article {
     background-color: var(--background);
-    padding: 10px 30px 10px 30px;    
-
-}
+   }
 
 /***********************************************/
 /*Display banner - Questions & Opening Heading */
@@ -119,11 +111,12 @@ article {
     color: var(--heading);
     font-weight: 800px;
     background-color: var(--objectbackground);
-    font-size: 2.5rem;
+    font-size: 1.5rem;
+    text-align: center;
     border: 3px solid var(--border);
     border-radius: 25px;          
-    padding: 19px 39px 19px 39px;
-    margin: 16px 16px 16px 16px;  
+    padding: 10px 10px 10px 10px;
+    margin: 0px 0px 0px 0px;  
 }
 
 /*******************************************************/
@@ -131,7 +124,8 @@ article {
 /*******************************************************/
 .card-answers {
     text-align: left;
-    padding: 0px 0px 0px 10px;    
+    padding: 0px 50px 0px 40px;    
+    background-color: red;    
 } 
 
 /******************/
@@ -139,16 +133,16 @@ article {
 /******************/
 .answerbtn {
     display: none;
-    margin: auto;
     text-align: left;   
     border: 3px solid var(--border);
     color: var(--fontcolor);
     background-color: var(--objectbackground);
     border-radius: 25px; 
-    font-size: 1.5rem;
-    margin: 16px 16px 16px 16px;
-    padding: 14px 34px 14px 34px;
-    cursor: pointer;        
+    font-size: 1.25rem;
+    margin: 10px 5px 10px 5px;
+    padding: 10px 20px 10px 20px;
+    cursor: pointer;
+    width: 100%;           
 }
 
 /******************************************/
@@ -170,23 +164,41 @@ article {
     text-align: center;
     left: 30px;
     width: 200px;
-    font-size: 2rem;
+    font-size: 1.5rem;
     background-color: yellow;
     border-radius: 10px;    
-    padding: 10px 10px 10px 10px;
+    padding: 5px 5px 5px 5px;
     border: 3px solid var(--border);
     margin: 20px 0px 0px 0px;
 }
 
 
 /***********************/
-/**** Welcome Blurb ****/
+/**** Rules Blurb ****/
 /***********************/
+
 #blurb {
     color: var(--fontcolor);
-    font-size: 1.5rem;;
+    font-size: 1.5rem;
+    padding: 5px 5px 5px 5px;
+    margin: 20px 100px 5px 100px;
+    text-align: left;
+    border-radius: 5px;
+    border: 3px solid white;
 }
 
+.bullet {
+    color: var(--fontcolor);
+    font-size: 1.25rem;;
+    text-align: left;
+    padding: 5px 5px 5px 15px;
+}
+
+.bullet::before {
+    content: ' ●';
+    color: var(--fontcolor);
+    font-size: 1rem;       
+}
 /*******************/
 /*Start Quiz Button*/
 /*******************/
@@ -194,12 +206,12 @@ article {
     border: none;
     border: 3px solid var(--border);
     background-color: hsl(108, 73%, 29%);
-    border-radius: 25px;
+    border-radius: 15px;
     color: hsl(0, 0%, 100%);    
-    font-size: 2rem;
+    font-size: 1.5rem;
     line-height: 22px;
-    margin: 30px 30px 30px 30px;    
-    padding: 25px 35px 25px 35px;    
+    margin: 10px 10px 10px 10px;    
+    padding: 10px 20px 10px 20px;
     cursor: pointer; 
 }
 
@@ -210,12 +222,12 @@ article {
     border: none;
     border: 3px solid var(--border);
     background-color: hsl(128, 44%, 43%);
-    border-radius: 25px;
+    border-radius: 15px;
     color: hsl(0, 0%, 100%);    
-    font-size: 2rem;
+    font-size: 1.5rem;
     line-height: 22px;
-    margin: 30px 30px 30px 30px;    
-    padding: 25px 35px 25px 35px;    
+    margin: 10px 10px 10px 10px;    
+    padding: 10px 20px 10px 20px;
     cursor: pointer; 
 }
 
@@ -297,33 +309,17 @@ footer {
 /*View high score*/
 /*****************/
 
+#highscore-ul {
+    display: inline-block;       
+}
+
 .li {
     padding: 5px;
     margin: 5px;
     background-color: var(--fontcolor);
     color: var(--background);
     border: 1px solid var(--objectbackground);
-    font-size: 2rem;
+    font-size: 1.25rem;    
+    text-align: center;  
     
-}
-
-/*************/
-/*-- Blurb --*/
-/*************/
-
-p {
-    text-align: left
-}
-
-.bullet {
-    color: var(--fontcolor);
-    font-size: 1.5rem;;
-    text-align: left;
-    padding: 5px;
-}
-
-.bullet::before {
-    content: ' ●';
-    color: var(--fontcolor);
-    font-size: 1rem;       
 }

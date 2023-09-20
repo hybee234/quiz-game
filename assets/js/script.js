@@ -199,7 +199,7 @@ function checkAnswer(){
         outcomeEl.style.border= "3px solid darkred";
         displayOutcome();
     }
-    setTimeout(quizInFlight,750);                    //wait 750ms before showing the next question     
+    setTimeout(quizInFlight,0);                    //wait 750ms before showing the next question     
 }
 
 //-----------------------------------------------//
@@ -234,6 +234,12 @@ function gameTimer() {
     gameTimeCounter = setInterval (function() {
         gameSeconds--;
         timerEl.textContent = gameSeconds + " seconds remaining";
+        if(gameSeconds <=30) {
+            timerEl.style.color = "rgb(200, 100, 25)";
+        }
+        if(gameSeconds <=10) {
+            timerEl.style.color = "red";
+        }
         if (gameSeconds <= 0) {
             console.log("    You have run out of time with " + score + " points");
             endGameString = "You have run out of time!"                 //text to display if user runs out of time  
@@ -261,7 +267,8 @@ function endGame() {
     cardHeadingEl.textContent = endGameString;                           //Set text to endGame String
     blurbEl.style.display = "block";                                     //Show blurb
     blurbEl.textContent = "You scored " + score + " points out of " + quizQuestions.length //Update blurb text
-    blurbEl.style.textAlign = 'center';                                  //Align Text to Center
+    blurbEl.style.textAlign = "center";                                  //Align Text to Center
+    blurbEl.style.border = "none";                                       //hide border
     console.log ("    Show - Blurb");
     hiScoreFormEl.style.display ="inline-block";                         //Show "Enter your Initials"
     hiScoreEl.style.display = "inline-block";                            //Show freetext field for initials

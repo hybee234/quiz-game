@@ -11,7 +11,7 @@
   <body>
     <header>
         <div id = "hiscorelink" > View High Scores </div>
-        <div id = "heading"> Hubers Coding Quiz Challenge </div>
+        <div id = "heading"></div>
         <div id = "timer"></div>        
     </header>
     <main class="main">
@@ -31,14 +31,14 @@
               </div >  
             <div id = "outcome"></div>    <!-- This is where Correct/Incorrect displays-->
         </article>  
-          <p id="blurb">Rules are:
+          <div id="blurb">Rules are:
             <ul class="bullet"> 10 questions </ul>
             <ul class="bullet"> 75 seconds on the timer </ul>
             <ul class="bullet"> 1 point for each correct answer </ul>
             <ul class="bullet"> Incorrect answer has a 15 second timer penalty </ul>
             <ul class="bullet"> Game ends when you either run out of questions or run out of time </ul>
             <ul class="bullet"> Good luck!!</ul>
-          </p>
+          </div>
           <form id="hiscore-form" method="GET">
             <label for="hiscore-initial">Enter your initials: </label>
               <input type="text" placeholder="Enter your initials..." name="Initials" id="hiscore-initial" maxlength = "5" required/>
