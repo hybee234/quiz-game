@@ -25,6 +25,7 @@ var reloadBtnEl = document.querySelector("#reloadBtn");             //Variable t
 var clearHiScoreBtnEl = document.querySelector("#clearHiScoreBtn"); //Variable targetting the "Clear High score" button that appears on High score screen
 var hiScoreLinkEl = document.querySelector("#hiscorelink");         //variable targetting the "View High Scores" element in header
 var playedThroughFlag = "N"                                         //Flag to determine if user played through the game (used to influence text that appears on reloadBtnEl)
+var bulletEl = document.querySelectorAll(".bullet");                //variable to target all bullets in blurb
 
 //--------------------------------------//
 //Store all the questions in this object//
@@ -125,6 +126,10 @@ function initialiseQuiz() {
     console.log ("    Hide - Start Quiz Button");
     blurbEl.style.display = "none";                             //Hide the blurb
     console.log ("    Hide - Blurb");
+    for (i=0; i< bulletEl.length; i++) {                       //Hide the blurb bullets
+        bulletEl[i].style.display = "none";
+    }                            
+    console.log ("    Hide - Blurb Bullets");
     hiScoreEl.style.display = "none";                           //Hide the high score field
     console.log ("    Hide - High score field");
     hiScoreBtn.style.display = "none";                          //Hide the high score button
@@ -257,6 +262,7 @@ function endGame() {
     cardHeadingEl.textContent = endGameString;                           //Set text to endGame String
     blurbEl.style.display = "block";                                     //Show blurb
     blurbEl.textContent = "You scored " + score + " points out of " + quizQuestions.length //Update blurb text
+    blurbEl.style.textAlign = 'center';                                  //Align Text to Center
     console.log ("    Show - Blurb");
     hiScoreFormEl.style.display ="inline-block";                         //Show "Enter your Initials"
     hiScoreEl.style.display = "inline-block";                            //Show freetext field for initials
