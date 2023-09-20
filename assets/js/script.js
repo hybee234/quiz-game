@@ -21,7 +21,7 @@ var hiScoreCurrent = {};                                            //Object to 
 var gameHasEnded = "N" ;                                            //variable that gameTimer() checks to determine if the game has already ended and the timer should stop <---- NOT USED
 var gameTimeCounter;                                                //variable to iteratively count down gamerSeconds
 var hiscoreulEl = document.querySelector("#highscore-ul");          //varlable target unordered list element to populate high scores
-var releadBtnEl = document.querySelector("#reloadBtn");             //Variable targetting the reload button that appears on High score screen
+var reloadBtnEl = document.querySelector("#reloadBtn");             //Variable targetting the reload button that appears on High score screen
 var clearHiScoreBtnEl = document.querySelector("#clearHiScoreBtn"); //Variable targetting the "Clear High score" button that appears on High score screen
 var hiScoreLinkEl = document.querySelector("#hiscorelink");         //variable targetting the "View High Scores" element in header
 
@@ -82,7 +82,7 @@ function initialiseQuiz() {
     console.log ("    Hide - High score button");
     clearHiScoreBtnEl.style.display = "none";                   //Hide the clear high score button
     console.log ("    Hide - Clear High score button");
-    releadBtnEl.style.display = "none";                         //Hide the Reload button
+    reloadBtnEl.style.display = "none";                         //Hide the Reload button
     console.log ("    Hide - Reload button");
     hiScoreLinkEl.style.visibility  = "hidden";                 //Hide View High score link
     console.log ("    Hide - View High Scores link");
@@ -126,10 +126,9 @@ function checkAnswer(){
     console.log("> checkAnswer() Called") 
     //If userAnswer matches answer in array, add score, add question number
     if (userAnswer === quizQuestions[questionNo].correct){
-        console.log("    User: " + userAnswer + ", Answer: " + quizQuestions[questionNo].correct);
-        console.log("    Correct! +1 point no time penalty");
         score++;                                    //add one to score
-        console.log ("    Score is now: " + score);
+        console.log("    Correct! User: " + userAnswer + ", Answer: " + quizQuestions[questionNo].correct + "+1 point.");                                            
+        console.log("    Score is now: " + score);
         questionNo++;                               //add one to question number
         outcomeEl.textContent = "Correct!";
         outcomeEl.style.color = "darkgreen";        
@@ -137,9 +136,8 @@ function checkAnswer(){
         outcomeEl.style.border= "3px solid darkgreen";
         displayOutcome();
     } else {
-        console.log("    User: " + userAnswer + ", Answer: " + quizQuestions[questionNo].correct)
-        console.log("    Incorrect! Time penalty");
         gameSeconds -= 15;                          //subtract 15 seconds from time
+        console.log("    Incorrect! User: " + userAnswer + ", Answer: " + quizQuestions[questionNo].correct + "-15 seconds.")        
         console.log("    Remaining time: "+ gameSeconds)
         questionNo++;                               //add one to question number
         outcomeEl.textContent = "Incorrect!";
@@ -304,7 +302,7 @@ function viewHighScore() {
     
     clearHiScoreBtnEl.style.display = "inline";             //Show the clear high score button
     console.log ("    Show - Clear High score button");
-    releadBtnEl.style.display = "inline";                   //Show the Reload Button 
+    reloadBtnEl.style.display = "inline";                   //Show the Reload Button 
     console.log ("    Show - Reload button");
     return;  
 };
@@ -331,7 +329,7 @@ clearHiScoreBtnEl.addEventListener("click", () => {
 //-------------------------------------------------------------//
 //Listener to reload the game when user clicks on "reloadBtnEl"//
 //-------------------------------------------------------------//
-releadBtnEl.addEventListener("click", () => {
+reloadBtnEl.addEventListener("click", () => {
     console.log("    reloadBtnEl clicked");   
     location.reload();    
 })
