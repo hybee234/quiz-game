@@ -24,13 +24,14 @@ var hiscoreulEl = document.querySelector("#highscore-ul");          //varlable t
 var reloadBtnEl = document.querySelector("#reloadBtn");             //Variable targetting the reload button that appears on High score screen
 var clearHiScoreBtnEl = document.querySelector("#clearHiScoreBtn"); //Variable targetting the "Clear High score" button that appears on High score screen
 var hiScoreLinkEl = document.querySelector("#hiscorelink");         //variable targetting the "View High Scores" element in header
+var playedThroughFlag = "N"                                         //Flag to determine if user played through the game (used to influence text that appears on reloadBtnEl)
 
 //--------------------------------------//
 //Store all the questions in this object//
 //--------------------------------------//
 var quizQuestions = [
     {
-        question: "Question 1 - Why is the sky blue?", 
+        question: "Q1 - Why is the sky blue?", 
         answerA: "A: Because it has been painted blue*",
         answerB: "B: It is a reflection of the sea",
         answerC: "C: Because Red would've been too angry a colour",
@@ -39,7 +40,7 @@ var quizQuestions = [
     },
     
     { 
-        question: "Question 2 - ",
+        question: "Q2 - ",
         answerA: "A: Yes2",
         answerB: "B: No2*",
         answerC: "C: Maybe2",
@@ -48,7 +49,7 @@ var quizQuestions = [
     },
 
     { 
-        question: "Question 3",
+        question: "Q3",
         answerA: "A: Yes3",
         answerB: "B: No3",
         answerC: "C: Maybe3*",
@@ -57,11 +58,59 @@ var quizQuestions = [
     },
 
     { 
-        question: "Question 4",
+        question: "Q4",
         answerA: "A: Yes4",
         answerB: "B: No4",
         answerC: "C: Maybe4",
-        answerD: "D:Other4*",
+        answerD: "D: Other4*",
+        correct: "d"
+    },
+    { 
+        question: "Q5",
+        answerA: "A: Yes4",
+        answerB: "B: No4",
+        answerC: "C: Maybe4",
+        answerD: "D: Other4*",
+        correct: "d"
+    },
+    { 
+        question: "Q6",
+        answerA: "A: Yes4",
+        answerB: "B: No4",
+        answerC: "C: Maybe4",
+        answerD: "D: Other4*",
+        correct: "d"
+    },
+    { 
+        question: "Q7",
+        answerA: "A: Yes4",
+        answerB: "B: No4",
+        answerC: "C: Maybe4",
+        answerD: "D: Other4*",
+        correct: "d"
+    },
+    { 
+        question: "Q8",
+        answerA: "A: Yes4",
+        answerB: "B: No4",
+        answerC: "C: Maybe4",
+        answerD: "D: Other4*",
+        correct: "d"
+    },
+    { 
+        question: "Q9",
+        answerA: "A: Yes4",
+        answerB: "B: No4",
+        answerC: "C: Maybe4",
+        answerD: "D: Other4*",
+        correct: "d"
+    },
+    { 
+        question: "Q10",
+        answerA: "A: Yes4",
+        answerB: "B: No4",
+        answerC: "C: Maybe4",
+        answerD: "D: Other4*",
         correct: "d"
     },
 ]
@@ -112,7 +161,7 @@ function quizInFlight(){
         answerCEl.textContent = quizQuestions[questionNo].answerC;       //Set answer C
         answerDEl.textContent = quizQuestions[questionNo].answerD;       //Set answer D        
     } else {
-        console.log("    You've reached the end and scored: " + score + " points");
+        console.log("    You have reached the end and scored: " + score + " points");
         endGameString = "Well Done! You've Completed the Quiz!"
         setTimeout(endGame, 1000); //call endGame function after 1000 millisends delay (allows outcome to finish displaying)       
     }    
@@ -127,7 +176,7 @@ function checkAnswer(){
     //If userAnswer matches answer in array, add score, add question number
     if (userAnswer === quizQuestions[questionNo].correct){
         score++;                                    //add one to score
-        console.log("    Correct! User: " + userAnswer + ", Answer: " + quizQuestions[questionNo].correct + "+1 point.");                                            
+        console.log("    Correct! User: " + userAnswer + ", Answer: " + quizQuestions[questionNo].correct + ". +1 point!");                                            
         console.log("    Score is now: " + score);
         questionNo++;                               //add one to question number
         outcomeEl.textContent = "Correct!";
@@ -137,7 +186,7 @@ function checkAnswer(){
         displayOutcome();
     } else {
         gameSeconds -= 15;                          //subtract 15 seconds from time
-        console.log("    Incorrect! User: " + userAnswer + ", Answer: " + quizQuestions[questionNo].correct + "-15 seconds.")        
+        console.log("    Incorrect! User: " + userAnswer + ", Answer: " + quizQuestions[questionNo].correct + ". -15 seconds!")        
         console.log("    Remaining time: "+ gameSeconds)
         questionNo++;                               //add one to question number
         outcomeEl.textContent = "Incorrect!";
@@ -154,7 +203,7 @@ function checkAnswer(){
 //-----------------------------------------------//
 function displayOutcome() {
     console.log("")
-    console.log("> displayOutcome() Called") 
+    console.log("> displayOutcome() Called");
     var outcomeSeconds = 1;
     outcomeEl.style.display = "block";
     var outcomeTimer = setInterval (function() {
@@ -167,18 +216,23 @@ function displayOutcome() {
     }, 1000);
 }
 
+//-----------------------------//
+//-- Main Timer for the Quiz --//
+//-----------------------------//
+
+
 function gameTimer() {
     console.log("")
     console.log("> gameTimer() Called") 
-    gameSeconds = 30;                                                   //set timer to 75 seconds (FIX THIS AT THE END)
+    gameSeconds = 75;                                                   //set timer to 75 seconds
     timerEl.textContent = gameSeconds + " seconds remaining";
     console.log("    gameSeconds set to " + gameSeconds + " seconds!!")
     gameTimeCounter = setInterval (function() {
         gameSeconds--;
         timerEl.textContent = gameSeconds + " seconds remaining";
         if (gameSeconds <= 0) {
-            console.log("    You've run out of time with " + score + " points");
-            endGameString = "You've run out of time!"                   //text to display if user runs out of time  
+            console.log("    You have run out of time with " + score + " points");
+            endGameString = "You have run out of time!"                 //text to display if user runs out of time  
             clearInterval(gameTimeCounter)     
             endGame();                
         }
@@ -186,9 +240,9 @@ function gameTimer() {
     return;
 };
 
-//-------------------------------------------//
-//-- Ends the game and show Hiscore fields --//
-//-------------------------------------------//
+//----------------------------------------------//
+//-- Ends the game and show High score fields --//
+//----------------------------------------------//
 
 function endGame() {
     console.log("")
@@ -200,14 +254,15 @@ function endGame() {
         answerbtnEl[i].style.display = "none";
         }
     console.log ("    Hide - answers button")    
-    cardHeadingEl.textContent = endGameString;      //Set text to endGame String
-    blurbEl.style.display = "block";                //Show blurb
-    blurbEl.textContent = "You scored " + score + " points out of " + quizQuestions.length //update blurb text
+    cardHeadingEl.textContent = endGameString;                           //Set text to endGame String
+    blurbEl.style.display = "block";                                     //Show blurb
+    blurbEl.textContent = "You scored " + score + " points out of " + quizQuestions.length //Update blurb text
     console.log ("    Show - Blurb");
-    hiScoreFormEl.style.display ="inline-block";    //Show "Enter your Initials"
-    hiScoreEl.style.display = "inline-block";       //Show freetext field for initials
-    hiScoreBtn.style.display = "inline-block";      //Show "submit" button      
+    hiScoreFormEl.style.display ="inline-block";                         //Show "Enter your Initials"
+    hiScoreEl.style.display = "inline-block";                            //Show freetext field for initials
+    hiScoreBtn.style.display = "inline-block";                           //Show "submit" button      
     console.log ("    Show - High score fields and button");
+    playedThroughFlag = "Y"                                              //Flag to indicate that "Yes" the game has been played through (used to influence text on reloadBtnEl)
 }
 
 //----------------------------------------------//
@@ -217,16 +272,16 @@ function endGame() {
 hiScoreBtn.addEventListener('click', (event) => {
     console.log("")
     console.log("> hiScoreBtn clicked") 
-    event.preventDefault();                                         //Prevent refresh with submit button is clicked
+    event.preventDefault();                                               //Prevent refresh with submit button is clicked
 //If "initials" field is blank - turn field yellow for 1 second//
     if (hiScoreEl.value === "") {
         console.log("    Error: Initial field blank")        
         var blankInitSeconds = 1;
-            hiScoreEl.style.background = "yellow";                  //turn field yellow
-            var initialTimer = setInterval (function() {            //1 second timer
+            hiScoreEl.style.background = "yellow";                        //turn field yellow
+            var initialTimer = setInterval (function() {                  //1 second timer
                 blankInitSeconds--;                    
                 if (blankInitSeconds === 0) {
-                    hiScoreEl.style.background = "rgb(51, 57, 63)"; //turn field colour back
+                    hiScoreEl.style.background = "rgb(51, 57, 63)";       //turn field colour back
                     clearInterval(initialTimer);
                 }
             }, 1000);
@@ -281,9 +336,9 @@ function viewHighScore() {
     hiscoreulEl.innerHTML = ""                               //clear Unordered list
     console.log(hiScoreArray)
     console.log("    hiScoreArray.length: " + hiScoreArray.length)    
-    cardHeadingEl.textContent = "High scores - Hall of Fame" //change title to High Score
+    cardHeadingEl.textContent = "High Scores - Hall of Fame" //change title to High Score
     console.log("    Update - Banner to 'High Score!'")
-    startBtnEl.style.display = "none";                          //Hide the start button
+    startBtnEl.style.display = "none";                       //Hide the start button
     console.log ("    Hide - Start Quiz Button");
     blurbEl.style.display = "none";                          //Hide blurb 
     console.log("    Hide - Blurb");
@@ -296,24 +351,22 @@ function viewHighScore() {
         var li = document.createElement ("li")               //loop through and create new element "li" for each object array
         li.className = "li";
         li.textContent = "Initials: " + hiScoreArray[i].initials + ", Score: " + hiScoreArray[i].score;     //set textContent of initial and score for new li element
-       //li.setAttribute("data-index", i);                   //setAttribute "data-index" to the variable number (i) - Don't think I need this line
         hiscoreulEl.appendChild(li);                         //append new li element to unordered list
     }
     
     clearHiScoreBtnEl.style.display = "inline";             //Show the clear high score button
     console.log ("    Show - Clear High score button");
+    //reload button to displauy "start again" if user has played through, else display "go back" (i.e. clicked on view high score)
+    if (playedThroughFlag === "Y") {
+        reloadBtnEl.textContent = "Start Again!";
+    } else {
+        reloadBtnEl.textContent = "Back to Home";
+    }        
     reloadBtnEl.style.display = "inline";                   //Show the Reload Button 
     console.log ("    Show - Reload button");
+
     return;  
 };
-
-
-/*
-
-blurbEl.style.display = "none";                             //Hide the blurb
-console.log ("    Hide - Blurb");
-
-*/
 
 //---------------------------------------------------------------------//
 //Listener to clear high scores when user clicks on "clearHiScoreBtnEl"//
@@ -330,8 +383,9 @@ clearHiScoreBtnEl.addEventListener("click", () => {
 //Listener to reload the game when user clicks on "reloadBtnEl"//
 //-------------------------------------------------------------//
 reloadBtnEl.addEventListener("click", () => {
-    console.log("    reloadBtnEl clicked");   
-    location.reload();    
+    console.log("    reloadBtnEl clicked");
+    playedThroughFlag = "N";   
+    location.reload();    //reloads the website - back to home page
 })
 
 //-------------------------------------------------------------------------------//
@@ -342,8 +396,8 @@ hiScoreLinkEl.addEventListener("click", ()=> {
      //submitStorage();
     console.log(hiScoreArray)
     console.log("    hiScoreArray.length: " + hiScoreArray.length)    
-    retrieveStorage();
-    viewHighScore();
+    retrieveStorage();     //retrieve latest array of highscores from local storage    
+    viewHighScore();       //display high scores
 });
 
 
