@@ -67,55 +67,54 @@ var quizQuestions = [
         correct: "d"
     },
     { 
-        question: "Q5 ",
-        answerA: "A) ",
-        answerB: "B) ",
-        answerC: "C) ",
-        answerD: "D) ",
+        question: "Q5 what is a javaScript function?",
+        answerA: "A) a resuable block of code that performs a specific task when called",
+        answerB: "B) a reusable block of code that runs when a specified event occurs",
+        answerC: "C) a comparison operator enabling assessment of data and stored values against one another",
+        answerD: "D) a arithmetic operator enabling storage of multiple variables in an array",
         correct: "a"
     },
     { 
-        question: "Q3",
-        answerA: "A) ",
-        answerB: "B) ",
-        answerC: "C) ",
-        answerD: "D) ",
+        question: "Q6 What does the 'a === b' expression mean in logical comparison?",
+        answerA: "A) The expression is incorrect, only a single '=' is required to store a value against a variable",
+        answerB: "B) loose equality between a and b (value only)",
+        answerC: "C) strict equality between a and b (value and data type)",
+        answerD: "D) that there is no need to use both variables 'a' and 'b' in your code",
         correct: "c"
     },
     { 
-        question: "Q3",
-        answerA: "A) ",
-        answerB: "B) ",
-        answerC: "C) ",
-        answerD: "D) ",
+        question: "Q7 What does 'document.querySelector' represent in code 'var outcomeEl = document.querySelector('#outcome');' ",
+        answerA: "A) create an new HTML element with ID = 'outcome'",
+        answerB: "B) target the HTML element with ID = 'outcome'",
+        answerC: "C) set an attribute against HTML element with ID = 'outcome'",
+        answerD: "D) run a query on HTML element with ID = 'outcome' and return data attribute values",
+        correct: "b"
+    },
+    { 
+        question: "Q8 What does this line of code do? outcomeEl.textContent = 'Correct!';",
+        answerA: "A) Update the text value in variable outcomeEl to 'Correct'",
+        answerB: "B) The coder is leaving a comment for themselves to indicate this line of code is correct",
+        answerC: "C) Update the text value that variable outcomeEl is targetting to 'Correct'!",
+        answerD: "D) This is a boolean expression that has an outcome of 'Corrent'",
         correct: "c"
     },
     { 
-        question: "Q3",
-        answerA: "A) ",
-        answerB: "B) ",
-        answerC: "C) ",
-        answerD: "D) ",
-        correct: "c"
+        question: "Q9 What is meant by the expression 'stringify' and what does it relate to?",
+        answerA: "A) Relates to JSON.Stringify - it turns strings into objects to be used by web applications",
+        answerB: "B) Relates to JSON.Stringify - it turns objects into strings to allow for local storage",
+        answerC: "C) Relates to JSON.Parse - use to stringify objects into strings to allow for local storage",
+        answerD: "D) Relates to JSON.Parse - used to stringify strings into objects to allow for local storage",
+        correct: "b"
     },
     { 
-        question: "Q3",
-        answerA: "A) ",
-        answerB: "B) ",
-        answerC: "C) ",
-        answerD: "D) ",
-        correct: "c"
-    },
-    { 
-        question: "Q3",
-        answerA: "A) ",
-        answerB: "B) ",
-        answerC: "C) ",
-        answerD: "D) ",
-        correct: "c"
+        question: "Q10 What is event bubbling?",
+        answerA: "A) Event bubbling connects multiple event listners to trigger sequentially",
+        answerB: "B) Event bubbling connects multiple event listeners to trigger simultanously",
+        answerC: "C) Event bubbling allows the propagation of function if multiple event listeners are triggered simultaneously",
+        answerD: "D) Event blubbing stops the propagation of functions if multiple event listeners are triggered simultaneously",
+        correct: "d"
     },
 ]
-
 function initialiseQuiz() {
     console.log ("> initialiseQuiz() Called");
     questionNo=0;                                               //start from question one
