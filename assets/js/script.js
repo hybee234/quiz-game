@@ -266,7 +266,7 @@ function endGame() {
     console.log ("    Hide - answers button")    
     cardHeadingEl.textContent = endGameString;                           //Set text to endGame String
     blurbEl.style.display = "block";                                     //Show blurb
-    blurbEl.textContent = "You scored " + score + " points out of " + quizQuestions.length //Update blurb text
+    blurbEl.textContent = "You scored " + score + " out of " + quizQuestions.length //Update blurb text
     blurbEl.style.textAlign = "center";                                  //Align Text to Center
     blurbEl.style.border = "none";                                       //hide border
     console.log ("    Show - Blurb");
