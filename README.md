@@ -120,6 +120,9 @@ N/A
 * Validate that  clicking "Start Quiz" launches you into the Quiz
 	* Validate that the "View high scores" link, Start Quiz button and blurb is hidden from view
 	* Validate that a timer is made visible with 75 seconds and counts down
+		* Validate that the timer font is in green when above 30 seconds
+		* Validate that the timer font turns orange below 30 seconds
+		* Validate that the timer font turns red below 10 seconds
 	* Validate that Questions are presented with 4 possible responses
 		* Validate that the responses change colour on hover
 		* Validate that clicking on any response will move the quiz onto the next question.

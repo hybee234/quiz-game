@@ -274,6 +274,7 @@ article {
 /*Freetext Field*/
 #hiscore-initial {
     color: var(--fontcolor);
+    border: 2px solid black;
     margin: 10px 10px 10px 10px;
     padding: 10px 10px 10px 10px;
 }
