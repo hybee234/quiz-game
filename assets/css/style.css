@@ -26,7 +26,9 @@
 
 header {
     display: flex;
-    background-color: var(--lighterbackground);                 
+    background-color: var(--lighterbackground);
+    width: 100%;
+    min-height: 10vh;                 
 }
 /***********************/
 /* link to high scores */
@@ -60,7 +62,6 @@ header {
     background-color: var(--lighterbackground);    
 }
 
-
 /*********/
 /* Timer */
 /*********/
@@ -86,16 +87,12 @@ header {
 main {
     display: inline-block;
     background-color: var(--background);
-    justify-content: center;
-    width: 90%;
+    justify-content: center;   
     border-radius: 25px;
     padding: 20px;
     margin: 20px;                            
-    min-height: 85vh;            
+    min-height: 82vh;           
 }
-
-
-
 
 /*****************************************************/
 /* Article container - includes Paragraph and Answers*/
@@ -124,8 +121,7 @@ article {
 /*******************************************************/
 .card-answers {
     text-align: left;
-    padding: 0px 50px 0px 40px;    
-    background-color: red;    
+    padding: 0px 50px 0px 40px; 
 } 
 
 /******************/
@@ -163,7 +159,7 @@ article {
     bottom: 0px; left: auto;
     text-align: center;
     left: 30px;
-    width: 200px;
+    
     font-size: 1.5rem;
     background-color: yellow;
     border-radius: 10px;    
@@ -181,7 +177,7 @@ article {
     color: var(--fontcolor);
     font-size: 1.5rem;
     padding: 5px 5px 5px 5px;
-    margin: 20px 100px 5px 100px;
+    margin: 20px 20px 5px 20px;
     text-align: left;
     border-radius: 5px;
     border: 3px solid white;
@@ -242,7 +238,7 @@ article {
     color: hsl(0, 0%, 100%);    
     font-size: 1rem;
     line-height: 22px;
-    margin: 30px 30px 30px 30px;    
+    margin: 10px 10px 10px 10px;    
     padding: 10px 20px 10px 20px;
     cursor: pointer;
 
@@ -259,7 +255,7 @@ article {
     color: hsl(0, 0%, 100%);    
     font-size: 1rem;
     line-height: 22px;
-    margin: 30px 30px 30px 30px;    
+    margin: 10px 10px 10px 10px;    
     padding: 10px 20px 10px 20px;
     cursor: pointer;
 }
@@ -300,9 +296,11 @@ article {
 
 
 footer {    
-    background-color: var(--lighterbackground);
-    padding: 10px 5px 100px 10px; 
-    margin-top: auto;       
+    color: var(--lighterbackground);
+    padding: 5px 5px 5px 5px; 
+    bottom: 0;
+    width: 100%;
+    min-height: 3vh;        
 }
 
 /*****************/
