@@ -32,24 +32,30 @@ header {
 /***********************/
 /* link to high scores */
 /***********************/
-/*dive container*/
+
 #hiscorelink {        
     flex: 1 0 0;          /* shorthand for: flex-grow: 1, flex-shrink: 1, flex-basis: 0 */
     display: flex;
     justify-content: center; /*Horizontal Center*/
-    align-items: end;           /*Vertical Center*/
+    align-items: center;           /*Vertical Center*/
     background-color: var(--lighterbackground);    
-    padding: 0px 0px 10px 0px;
-    margin: 0px 20px 0px 0px;
+    padding: 5px 5px 5px 5px;
+    margin: 75px 5px 0px 5px;
+   
+    color: blue;    
+    font-size: 1rem;  
+    text-decoration: underline;
+    cursor: pointer;  
+     
 }
 
-#hiscoreURL {
-    background-color: var(--lighterbackground);  
+#hiscorelink:hover { 
+    color: rgb(6, 4, 153);
+    font-weight: 550;
 }
-
-/************************/
+/*********************/
 /* Heading in header */
-/************************/
+/*********************/
 
 #heading {   
     flex: 3 0 0;       /* shorthand for: flex-grow: 1, flex-shrink: 1, flex-basis: 0 */
@@ -170,7 +176,6 @@ article {
 }
 
 
-
 /***********************/
 /**** Welcome Blurb ****/
 /***********************/
@@ -179,31 +184,44 @@ article {
     font-size: 1.5rem;;
 }
 
-
-
-
 /*******************/
 /*Start Quiz Button*/
 /*******************/
-#startBtn {
+#startBtn { 
     border: none;
+    border: 3px solid var(--border);
     background-color: hsl(108, 73%, 29%);
     border-radius: 25px;
     color: hsl(0, 0%, 100%);    
     font-size: 2rem;
     line-height: 22px;
     margin: 30px 30px 30px 30px;    
-    padding: 35px 55px 35px 55px;
-    cursor: pointer;   
+    padding: 25px 35px 25px 35px;    
+    cursor: pointer; 
 }
 
-/***********************************/
-/*Clear Hi Score/Start Again Button*/
-/***********************************/
-
-#clearHiScoreBtn, #reloadBtn {
-    display: none;
+/***************************/
+/*Start Quiz Button - Hover*/
+/***************************/
+#startBtn:hover { 
     border: none;
+    border: 3px solid var(--border);
+    background-color: hsl(128, 44%, 43%);
+    border-radius: 25px;
+    color: hsl(0, 0%, 100%);    
+    font-size: 2rem;
+    line-height: 22px;
+    margin: 30px 30px 30px 30px;    
+    padding: 25px 35px 25px 35px;    
+    cursor: pointer; 
+}
+
+/********************************************/
+/*Clear HiScore/Reload/Submit Hiscore Button*/
+/********************************************/
+#clearHiScoreBtn, #reloadBtn, #hiscoreBtn {
+    display: none;
+    border: 3px solid var(--border);
     background-color: hsl(108, 73%, 29%);
     border-radius: 15px;
     color: hsl(0, 0%, 100%);    
@@ -214,6 +232,23 @@ article {
     cursor: pointer;
 
 }
+
+/****************************************************/
+/*Clear HiScore/Reload/Submit Hiscore Button - Hover*/
+/****************************************************/
+#clearHiScoreBtn:hover, #reloadBtn:hover, #hiscoreBtn:hover {
+    display: none;
+    border: 3px solid var(--border);
+    background-color: hsl(128, 44%, 43%);
+    border-radius: 15px;
+    color: hsl(0, 0%, 100%);    
+    font-size: 1rem;
+    line-height: 22px;
+    margin: 30px 30px 30px 30px;    
+    padding: 10px 20px 10px 20px;
+    cursor: pointer;
+}
+
 
 /*********************/
 /** Form - Hi Score **/
@@ -232,8 +267,9 @@ article {
     padding: 10px 10px 10px 10px;
 }
 
+
 /*Submit button*/
-#hiscoreBtn {
+/*#hiscoreBtn {
     color: var(--fontcolor);
     padding: 5px 5px 5px 5px;
     margin: 10px 10px 10px 10px;
@@ -241,12 +277,7 @@ article {
     border-radius: 10px;
     border: 3px solid var(--border);
 }
-
-#hiscorelink {
-    color: var(--blue);
-    text-decoration: underline;    
-}
-
+*/
 
 /****************/
 /**** Footer ****/
