@@ -117,7 +117,7 @@ var quizQuestions = [
 ]
 
 function initialiseQuiz() {
-    console.log ("> initialiseQuiz() called");
+    console.log ("> initialiseQuiz() Called");
     questionNo=0;                                               //start from question one
     console.log ("    Reset - Question number: " + questionNo );
     score = 0;                                                  //start with score zero
@@ -277,7 +277,7 @@ function endGame() {
 
 hiScoreBtn.addEventListener('click', (event) => {
     console.log("")
-    console.log("> hiScoreBtn clicked") 
+    console.log("! hiScoreBtn Clicked") 
     event.preventDefault();                                               //Prevent refresh with submit button is clicked
 //If "initials" field is blank - turn field yellow for 1 second//
     if (hiScoreEl.value === "") {
@@ -351,15 +351,13 @@ function viewHighScore() {
     hiScoreFormEl.style.display ="none";                     //Hide "Enter your Initials"
     hiScoreEl.style.display = "none";                        //Hide freetext field for initials
     hiScoreBtn.style.display = "none";                       //Hide "submit" button      
-    console.log("    Hide - High score fields and button");
-    
+    console.log("    Hide - High score fields and button");    
     for (var i = 0; i < hiScoreArray.length; i++) {
         var li = document.createElement ("li")               //loop through and create new element "li" for each object array
         li.className = "li";
         li.textContent = "Initials: " + hiScoreArray[i].initials + ", Score: " + hiScoreArray[i].score;     //set textContent of initial and score for new li element
         hiscoreulEl.appendChild(li);                         //append new li element to unordered list
-    }
-    
+    };
     clearHiScoreBtnEl.style.display = "inline";             //Show the clear high score button
     console.log ("    Show - Clear High score button");
     //reload button to displauy "start again" if user has played through, else display "go back" (i.e. clicked on view high score)
@@ -367,18 +365,18 @@ function viewHighScore() {
         reloadBtnEl.textContent = "Start Again!";
     } else {
         reloadBtnEl.textContent = "Back to Home";
-    }        
+    };        
     reloadBtnEl.style.display = "inline";                   //Show the Reload Button 
     console.log ("    Show - Reload button");
-
     return;  
 };
 
 //---------------------------------------------------------------------//
 //Listener to clear high scores when user clicks on "clearHiScoreBtnEl"//
 //---------------------------------------------------------------------//
-clearHiScoreBtnEl.addEventListener("click", () => {    
-    console.log("    clearHiScoreBtnEl clicked");   
+clearHiScoreBtnEl.addEventListener("click", () => {   
+    console.log("") 
+    console.log("! clearHiScoreBtnEl Clicked");   
     hiScoreArray = [];   // Clear the array    
     submitStorage();     // Submit the empty array to local storage
     retrieveStorage();   // Retrieve the empty array from local storage
@@ -389,7 +387,8 @@ clearHiScoreBtnEl.addEventListener("click", () => {
 //Listener to reload the game when user clicks on "reloadBtnEl"//
 //-------------------------------------------------------------//
 reloadBtnEl.addEventListener("click", () => {
-    console.log("    reloadBtnEl clicked");
+    console.log("")
+    console.log("! reloadBtnEl Clicked");
     playedThroughFlag = "N";   
     location.reload();    //reloads the website - back to home page
 })
@@ -398,7 +397,8 @@ reloadBtnEl.addEventListener("click", () => {
 //Listener to show high score when use clicks on View High Scores link in header"//
 //-------------------------------------------------------------------------------//
 hiScoreLinkEl.addEventListener("click", ()=> {
-    console.log("    hiScoreLinkEl clicked");   
+    console.log("") 
+    console.log("! hiScoreLinkEl Clicked");   
      //submitStorage();
     console.log(hiScoreArray)
     console.log("    hiScoreArray.length: " + hiScoreArray.length)    
