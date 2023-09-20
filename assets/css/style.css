@@ -201,7 +201,7 @@ article {
 /*Clear Hi Score/Start Again Button*/
 /***********************************/
 
-#clearHiScoreBtn, #startAgainBtn {
+#clearHiScoreBtn, #reloadBtn {
     display: none;
     border: none;
     background-color: hsl(108, 73%, 29%);
