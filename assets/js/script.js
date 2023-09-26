@@ -199,7 +199,7 @@ function checkAnswer(){
         outcomeEl.style.border= "3px solid darkred";
         displayOutcome();
     }
-    setTimeout(quizInFlight,0);                    //wait 750ms before showing the next question     
+    setTimeout(quizInFlight,0);                    //wait 0ms before showing the next question     
 }
 
 //-----------------------------------------------//
@@ -287,7 +287,7 @@ hiScoreBtn.addEventListener('click', (event) => {
     event.preventDefault();                                               //Prevent refresh with submit button is clicked
 //If "initials" field is blank - turn field yellow for 1 second//
     if (hiScoreEl.value === "") {
-        console.log("    Error: Initial field blank")        
+        console.log("    Error: Initials field blank")        
         var blankInitSeconds = 1;
             hiScoreEl.style.background = "yellow";                        //turn field yellow
             var initialTimer = setInterval (function() {                  //1 second timer
