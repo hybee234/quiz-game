@@ -427,19 +427,19 @@ answerAEl.addEventListener("click", () => {
     console.log("    userAnswer = " + userAnswer);
     checkAnswer();
 });
-    //If user clicks answer to A - update "userAnswer" variable to "a" and call "checkAnswer" function
+    //If user clicks answer to B - update "userAnswer" variable to "b" and call "checkAnswer" function
 answerBEl.addEventListener("click", () => {
     userAnswer = "b";    
     console.log("    userAnswer = " + userAnswer);
     checkAnswer();
 });
-    //If user clicks answer to A - update "userAnswer" variable to "a" and call "checkAnswer" function
+    //If user clicks answer to C - update "userAnswer" variable to "c" and call "checkAnswer" function
 answerCEl.addEventListener("click", () => {
     userAnswer = "c";
     console.log("    userAnswer = " + userAnswer);
     checkAnswer();
 })
-    //If user clicks answer to A - update "userAnswer" variable to "a" and call "checkAnswer" function
+    //If user clicks answer to D - update "userAnswer" variable to "d" and call "checkAnswer" function
 answerDEl.addEventListener("click", () => {
     userAnswer = "d";
     console.log("    userAnswer = " + userAnswer);
